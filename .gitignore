@@ -27,7 +27,6 @@ lib-cov
 node_modules
 npm-debug.log*
 pids
-typings/
 yarn-debug.log*
 yarn-error.log*
 yarn.lock
