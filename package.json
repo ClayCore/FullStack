@@ -1,0 +1,37 @@
+{
+    "name": "flux-app",
+    "version": "0.1.0",
+    "private": true,
+    "engines": {
+        "node": "^12.14.1",
+        "npm": "^7.0.15",
+        "yarn": "^1.12.4"
+    },
+    "browserslist": [
+        "since 2019-12"
+    ],
+    "lint-staged": {
+        "*.{tsx, ts, js, scss}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "scripts": {
+        "install": "yarn install:server && yarn install:client && yarn install:shared",
+        "install:server": "cd server && yarn install",
+        "install:client": "cd client && yarn install",
+        "install:shared": "cd shared && yarn install",
+        "build": "yarn build:server && yarn build:client && yarn build:shared",
+        "build:server": "cd server && yarn build",
+        "build:client": "cd client && yarn build",
+        "build:shared": "cd shared && yarn build",
+        "start": "concurrently \"yarn start:server\" \"yarn start:client\"",
+        "start:server": "cd server && yarn start",
+        "start:client": "cd client && yarn start",
+        "lint": "yarn lint:server && yarn lint:client",
+        "lint:server": "cd server && yarn lint",
+        "lint:client": "cd client && yarn lint",
+        "serve": "cd server && yarn serve",
+        "heroku-postbuild": "yarn start:client"
+    }
+}
