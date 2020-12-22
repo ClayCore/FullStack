@@ -7,8 +7,8 @@
         "forceConsistentCasingInFileNames": true,
         "isolatedModules": true,
         "jsx": "react",
-        "lib": ["DOM", "DOM.Iterable", "ESNext", "ES2020"],
-        "module": "esnext",
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "module": "commonjs",
         "moduleResolution": "node",
         "noEmit": true,
         "resolveJsonModule": true,
@@ -16,15 +16,14 @@
         "sourceMap": true,
         "strict": true,
         "target": "ES6",
-        "outDir": "dist",
         "typeRoots": ["node_modules/@types"],
         "paths": {
-            "~*": ["./src/*"],
+            "~/*": ["./src/*"],
             "@flux/client/*": ["../client/src/*"],
             "@flux/server/*": ["../server/src/*"],
             "@flux/assets/*": ["../assets/*"]
         }
     },
-    "include": ["./src/**/*"],
+    "include": ["./src/*"],
     "exclude": ["./node_modules/**/*"]
 }

@@ -25,6 +25,6 @@
         "typeRoots": ["node_modules/@types"],
         "outDir": "public"
     },
-    "include": ["./src/**/*", "./typings/**/*.d.ts"],
+    "include": ["./src/*", "./typings/**/*.d.ts"],
     "exclude": ["./node_modules/**/*"]
 }

@@ -20,7 +20,7 @@
 *.seed
 build/
 dist/
-publlic/
+public/
 bower_components
 coverage
 lib-cov
