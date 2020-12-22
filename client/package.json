@@ -33,6 +33,7 @@
         "ionicons": "5.2.3",
         "moment": "2.29.1",
         "parcel-bundler": "1.12.4",
+        "parcel-plugin-typescript-paths": "0.1.14",
         "prettier": "2.1.2",
         "prettier-eslint": "11.0.0",
         "react": "^16.8.3 || ^17",
@@ -45,12 +46,12 @@
         "redux": "^2.0.0 || ^3.0.0 || ^4.0.0-0",
         "redux-thunk": "2.3.0",
         "sass": "1.26.11",
-        "typescript": "3.4.3"
+        "typescript": "3.9.7"
     },
     "scripts": {
-        "build-ts": "tsc",
-        "build": "yarn build-ts && parcel build src/index.html --public-url / --out-dir public/",
-        "start": "yarn build-ts && parcel --no-autoinstall src/index.html --public-url / --out-dir public/",
+        "build-ts": "tsc --noEmit --watch",
+        "build": "parcel build src/index.html --public-url / --out-dir public/",
+        "start": "parcel --no-autoinstall src/index.html --public-url / --out-dir public/",
         "lint": "eslint"
     }
 }

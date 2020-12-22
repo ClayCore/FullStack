@@ -7,7 +7,7 @@
         "forceConsistentCasingInFileNames": true,
         "isolatedModules": true,
         "jsx": "react",
-        "lib": ["DOM", "DOM.Iterable", "ESNext", "ES2020"],
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "paths": {
             "~/*": ["./src/*"],
             "@flux/shared/*": ["../shared/src/*"],

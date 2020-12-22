@@ -1,7 +1,7 @@
-import { getBlobNameFromUrl } from '@flux/server/repository/utils';
+import { getBlobNameFromUrl } from '../../repository/utils';
 import bcrypt from 'bcrypt';
 import mongoose, { Model, Schema } from 'mongoose';
-import storage, { CONTAINER_AVATAR } from '@flux/server/repository/storage';
+import storage, { CONTAINER_AVATAR } from '../../repository/storage';
 import UserDocument, { ComparePasswordFunction } from './UserDocument';
 
 export const userSchema: Schema = new mongoose.Schema(

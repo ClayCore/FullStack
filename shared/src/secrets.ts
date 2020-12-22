@@ -1,12 +1,5 @@
 import dotenv from 'dotenv';
-import {
-    HOSTURL_PROD,
-    HOSTURL_DEV,
-    SERVERPORT_DEV,
-    SERVERPORT_PROD,
-    HOSTNAME_PROD,
-    HOSTNAME_DEV,
-} from '@flux/shared/hostUrls';
+import { HOSTURL_PROD, HOSTURL_DEV, SERVERPORT_DEV, SERVERPORT_PROD, HOSTNAME_PROD, HOSTNAME_DEV } from './hostUrls';
 
 export const ENVIRONMENT = process.env.NODE_ENV;
 const prod = ENVIRONMENT === 'production';

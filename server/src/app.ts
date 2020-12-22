@@ -1,5 +1,5 @@
 import { CORS_WHITELIST } from '@flux/shared/hostUrls';
-import { MONGODB_URI, SESSION_SECRET, SERVER_PORT, ORIGIN_URI } from './utils/secrets';
+import { MONGODB_URI, SESSION_SECRET, SERVER_PORT, ORIGIN_URI } from '@flux/shared/secrets';
 import { Response, Request, NextFunction } from 'express';
 import bluebird from 'bluebird';
 import compression from 'compression';

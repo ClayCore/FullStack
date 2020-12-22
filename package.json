@@ -21,7 +21,7 @@
         "install:server": "cd server && yarn install",
         "install:client": "cd client && yarn install",
         "install:shared": "cd shared && yarn install",
-        "build": "yarn build:server && yarn build:client && yarn build:shared",
+        "build": "yarn build:server && yarn build:client",
         "build:server": "cd server && yarn build",
         "build:client": "cd client && yarn build",
         "build:shared": "cd shared && yarn build",

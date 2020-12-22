@@ -1,5 +1,5 @@
 import Client from './Client';
-import { HOST_URL } from '@flux/server/utils/secrets';
+import { HOST_URL } from '../../secrets';
 
 const ClientCollection: Client[] = [
     {
