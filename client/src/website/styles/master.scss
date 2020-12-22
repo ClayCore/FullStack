@@ -1,0 +1,132 @@
+@use 'reset';
+@use 'loader';
+@use 'fonts';
+
+@use 'globals' as *;
+
+$sidebar-width: 12%;
+$topbar-height: 4%;
+
+// All elements prior to the `main display` are basically wrappers
+#root,
+#wrapper,
+body,
+html {
+    @extend %root-window;
+}
+
+// The main display will be centered
+main {
+    @extend %default-center;
+
+    align-items: initial;
+    justify-content: initial;
+}
+
+aside#sidebar {
+    @extend %default-center;
+    @include horizontal-shadow;
+
+    flex-direction: column;
+    justify-content: flex-start;
+
+    width: $sidebar-width;
+    background-color: $dark-bgcolor;
+    color: $dark-fgcolor;
+
+    z-index: 1;
+
+    #banner {
+        @extend %default-center;
+
+        height: 10%;
+
+        font-family: 'Roboto Slab';
+        font-size: 200%;
+        font-variant: small-caps;
+        letter-spacing: 0.3vmin;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+
+        width: 100%;
+        height: calc(100% - 15%);
+
+        a {
+            @extend %default-center;
+
+            transition: all 0.2s cubic-bezier(0.7, -0.02, 0.16, 0.99);
+
+            justify-content: flex-start;
+            padding-left: 2vmin;
+
+            width: 100%;
+            height: 4vmin;
+
+            font-weight: 400;
+            letter-spacing: 0.1vmin;
+            text-decoration: none;
+
+            color: $dark-fgcolor;
+            text-shadow: 2px 2px $shadow-color;
+
+            ion-icon {
+                padding-right: 2vmin;
+                font-size: 125%;
+                filter: drop-shadow(2px 2px 0px $shadow-color);
+            }
+
+            span {
+                font-size: 100%;
+            }
+        }
+
+        a:hover {
+            background-color: rgba(150, 150, 255, 0.2);
+        }
+    }
+}
+
+header#topbar {
+    @extend %default-center;
+    @include vertical-shadow;
+
+    position: fixed;
+    left: $sidebar-width;
+    top: 0;
+
+    justify-content: flex-start;
+
+    height: $topbar-height;
+    background-color: $dark-bgcolor;
+    color: $dark-fgcolor;
+
+    z-index: 0;
+
+    #info {
+        padding-left: 2vmin;
+
+        #version {
+            display: inline;
+
+            font-family: monospace;
+            font-size: 12pt;
+        }
+    }
+}
+
+// Content styling
+main article {
+    @extend %default-center;
+
+    position: fixed;
+    top: $topbar-height;
+    left: $sidebar-width;
+
+    width: calc(100% - #{$sidebar-width});
+    height: calc(100% - #{$topbar-height});
+}

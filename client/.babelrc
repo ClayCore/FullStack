@@ -1,0 +1,16 @@
+{
+    "plugins": [
+        [
+            "module-resolver",
+            {
+                "root": ["./"],
+                "alias": {
+                    "~": "./src",
+                    "@flux/shared": "../shared/src",
+                    "@flux/server": "../server/src",
+                    "@flux/assets": "../assets/"
+                }
+            }
+        ]
+    ]
+}
