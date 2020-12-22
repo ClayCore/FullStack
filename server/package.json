@@ -80,7 +80,7 @@
         "build": "yarn build-ts && yarn lint",
         "lint": "eslint",
         "build-ts": "tsc",
-        "serve": "yarn build && node dist/server.js",
+        "serve": "yarn build && node dist/server/src/server.js",
         "start": "yarn build"
     }
 }

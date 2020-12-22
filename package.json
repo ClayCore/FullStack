@@ -24,7 +24,6 @@
         "build": "yarn build:server && yarn build:client",
         "build:server": "cd server && yarn build",
         "build:client": "cd client && yarn build",
-        "build:shared": "cd shared && yarn build",
         "start": "concurrently \"yarn start:server\" \"yarn start:client\"",
         "start:server": "cd server && yarn start",
         "start:client": "cd client && yarn start",
