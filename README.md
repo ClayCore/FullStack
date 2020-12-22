@@ -1,3 +1,3 @@
-# Continuum Server
+# Claymore's Personal Blog
 
-[![](https://tokei.rs/b1/gitlab/lunarium_lab/continuum-server)](https://gitlab.com/lunarium_lab/continuum-server)
+[![](https://tokei.rs/b1/github/claycore/fullstack)](https://github.com/claycore/fullstack)

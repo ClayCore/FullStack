@@ -6,7 +6,7 @@
 
 # Bug reports
 
-Please include the error message, and a minimum working example including various game assets or anything else useful.
+Please include the error message, and a minimum working example including various assets or anything else useful.
 
 ```
 This file crashes the program
