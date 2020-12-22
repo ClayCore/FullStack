@@ -32,6 +32,6 @@
         "lint:server": "cd server && yarn lint",
         "lint:client": "cd client && yarn lint",
         "serve": "cd server && yarn serve",
-        "heroku-postbuild": "yarn start:client"
+        "heroku-postbuild": "yarn build:client"
     }
 }
