@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
-import connectAllProps from '@flux/shared/connect';
-import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
 import { FormattedMessage } from 'react-intl';
 
+type Props = {};
 type States = {};
 
 class Home extends React.Component<Props, States> {
@@ -22,4 +21,4 @@ class Home extends React.Component<Props, States> {
     }
 }
 
-export default connectAllProps(Home);
+export default Home;

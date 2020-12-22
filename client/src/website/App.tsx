@@ -1,9 +1,12 @@
 import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
-import { Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import connectAllprops from '@flux/shared/connect';
+import Container from './Container';
 import Loader from './Loader';
-import React, { RefObject, createRef } from 'react';
-import Routes from '../Routes';
+import React from 'react';
+
+import Home from './pages/Home';
+import ErrorPage from './pages/ErrorPage';
 
 type States = {
     interval: number;
@@ -12,8 +15,6 @@ type States = {
 };
 
 class App extends React.Component<Props, States> {
-    private contextRef: RefObject<any>;
-
     constructor(props: Props) {
         super(props);
 
@@ -22,8 +23,6 @@ class App extends React.Component<Props, States> {
             is_loading: true,
             error: '',
         };
-
-        this.contextRef = createRef();
     }
 
     render(): React.ReactElement<any> {
@@ -35,22 +34,21 @@ class App extends React.Component<Props, States> {
 
         if (error) {
             return (
-                <div ref={this.contextRef}>
-                    <Redirect
-                        to={{
-                            pathname: '/error',
-                            state: {
-                                message: error,
-                            },
-                        }}
-                    />
+                <div>
+                    <Container>
+                        <ErrorPage error={error} />
+                    </Container>
                 </div>
             );
         }
 
         return (
-            <div ref={this.contextRef}>
-                <Routes />
+            <div>
+                <Container>
+                    <Switch>
+                        <Route exact path="/" render={(props) => <Home {...props} />} />
+                    </Switch>
+                </Container>
             </div>
         );
     }

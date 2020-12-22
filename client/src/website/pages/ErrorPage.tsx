@@ -1,14 +1,12 @@
-import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
-import { FormattedMessage } from 'react-intl';
-import connectAllProps from '@flux/shared/connect';
 import React, { Fragment } from 'react';
+import { FormattedMessage } from 'react-intl';
 
-type ErrorPageProps = Props & {
+type Props = {
     error: string;
 };
 type States = {};
 
-class ErrorPage extends React.Component<ErrorPageProps, States> {
+class ErrorPage extends React.Component<Props, States> {
     render(): any {
         return (
             <Fragment>
@@ -23,4 +21,4 @@ class ErrorPage extends React.Component<ErrorPageProps, States> {
     }
 }
 
-export default connectAllProps(ErrorPage);
+export default ErrorPage;
