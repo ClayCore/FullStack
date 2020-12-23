@@ -1,6 +1,6 @@
-import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
 import { Switch, Route } from 'react-router-dom';
-import connectAllprops from '@flux/shared/connect';
+import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
+import connectAllProps from '@flux/shared/connect';
 import Container from './Container';
 import Loader from './Loader';
 import React from 'react';
@@ -11,7 +11,7 @@ import ErrorPage from './pages/ErrorPage';
 type States = {
     interval: number;
     is_loading: boolean;
-    error: string;
+    error: string | null;
 };
 
 class App extends React.Component<Props, States> {
@@ -20,8 +20,8 @@ class App extends React.Component<Props, States> {
 
         this.state = {
             interval: 0,
-            is_loading: true,
-            error: '',
+            is_loading: false,
+            error: null,
         };
     }
 
@@ -34,24 +34,19 @@ class App extends React.Component<Props, States> {
 
         if (error) {
             return (
-                <div>
-                    <Container>
-                        <ErrorPage error={error} />
-                    </Container>
-                </div>
+                <Container>
+                    <ErrorPage error={error} />
+                </Container>
             );
         }
-
         return (
-            <div>
-                <Container>
-                    <Switch>
-                        <Route exact path="/" render={(props) => <Home {...props} />} />
-                    </Switch>
-                </Container>
-            </div>
+            <Container>
+                <Switch>
+                    <Route exact path="/" render={(props) => <Home {...props} />} />
+                </Switch>
+            </Container>
         );
     }
 }
 
-export default connectAllprops(App);
+export default connectAllProps(App);

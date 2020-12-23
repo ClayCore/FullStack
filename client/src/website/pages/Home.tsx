@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 type Props = {};
 type States = {};
 
-class Home extends React.Component<Props, States> {
+export default class Home extends React.Component<Props, States> {
     render(): any {
         return (
             <Fragment>
@@ -20,5 +20,3 @@ class Home extends React.Component<Props, States> {
         );
     }
 }
-
-export default Home;

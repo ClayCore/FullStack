@@ -1,17 +1,16 @@
 import React, { Fragment } from 'react';
-import { FormattedMessage } from 'react-intl';
 
 type Props = {
     error: string;
 };
 type States = {};
 
-class ErrorPage extends React.Component<Props, States> {
+export default class ErrorPage extends React.Component<Props, States> {
     render(): any {
         return (
             <Fragment>
                 <header>
-                    <FormattedMessage id="page.about" />
+                    <h1>Error!</h1>
                 </header>
                 <main>
                     <section>{this.props.error}</section>
@@ -20,5 +19,3 @@ class ErrorPage extends React.Component<Props, States> {
         );
     }
 }
-
-export default ErrorPage;

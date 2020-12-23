@@ -1,8 +1,7 @@
-import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
-import connectAllProps from '@flux/shared/connect';
 import React from 'react';
 import spinner from '@flux/assets/icons/spinner.svg';
 
+type Props = {};
 type States = {};
 
 class Loader extends React.Component<Props, States> {
@@ -15,4 +14,4 @@ class Loader extends React.Component<Props, States> {
     }
 }
 
-export default connectAllProps(Loader);
+export default Loader;

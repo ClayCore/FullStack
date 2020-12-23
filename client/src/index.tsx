@@ -1,18 +1,18 @@
 import { $ } from '@flux/shared/utils';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { HOSTURL_DEV, HOSTURL_PROD } from '@flux/shared/hostUrls';
+import { initFontLibrary } from './utils';
 import { initStorage } from '@flux/shared/storage';
 import { initToast } from '@flux/shared/toast';
 import { Provider } from 'react-redux';
 import { SET_LOCALE } from '@flux/shared/actions/common';
 import { setHostUrl } from '@flux/shared/fetch';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import App from './website/App';
 import ConnectedIntlProvider from '@flux/shared/intl';
-import fonts, { initFontLibrary } from './utils';
 import moment from 'moment';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import StorageWrapper from './website/components/StorageWrapper';
 import store from '@flux/shared/store';
 import ToastWrapper from './website/components/ToastWrapper';
@@ -41,35 +41,39 @@ moment.locale(navigator.language);
 initToast(new ToastWrapper(store));
 initStorage(StorageWrapper);
 
-// Initializes icon fonts
-initFontLibrary();
+(function () {
+    // This will make sure that DOM is loaded.
+    let onReady = function (callback: Function) {
+        let intervalId = window.setInterval(function () {
+            if ($('body') !== undefined) {
+                window.clearInterval(intervalId);
+                callback.call(onReady);
+            }
+        }, 1000);
+    };
 
-let onReady = function (callback: Function) {
-    let intervalId = window.setInterval(function () {
-        if ($('body') !== undefined) {
-            window.clearInterval(intervalId);
-            callback.call(onReady);
-        }
-    }, 1000);
-};
+    // Add all the styles
+    require('./website/styles/master.scss');
 
-let entryPoint = $('#root');
+    // Initializes icon fonts
+    initFontLibrary();
 
-require('./website/styles/master.scss');
+    onReady(function () {
+        $('body')!.classList.add('loaded');
+    });
 
-onReady(function () {
-    $('body')!.classList.add('loaded');
-});
+    // start rendering
+    let entryPoint = $('#root');
+    ReactDOM.render(
+        <Provider store={store}>
+            <ConnectedIntlProvider>
+                <Router>
+                    <App />
+                </Router>
+            </ConnectedIntlProvider>
+        </Provider>,
+        entryPoint
+    );
 
-ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedIntlProvider>
-            <Router>
-                <App />
-            </Router>
-        </ConnectedIntlProvider>
-    </Provider>,
-    entryPoint
-);
-
-serviceWorker.unregister();
+    serviceWorker.unregister();
+})();
