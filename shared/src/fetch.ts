@@ -1,4 +1,8 @@
-import { ACCESS_TOKEN_KEY, RESPONSE_CONTENT_TYPE, INVALID_TOKEN_ERROR } from './constants';
+import {
+    ACCESS_TOKEN_KEY,
+    RESPONSE_CONTENT_TYPE,
+    INVALID_TOKEN_ERROR,
+} from './constants';
 import { getStorage as localStorage } from './storage';
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import sleep from './sleep';
@@ -39,7 +43,9 @@ const _fetch = async (
     };
 
     if (withToken) {
-        const token: string | null = await localStorage().getItem(ACCESS_TOKEN_KEY);
+        const token: string | null = await localStorage().getItem(
+            ACCESS_TOKEN_KEY
+        );
         if (token) {
             headers['Authorization'] = 'Bearer ' + token;
         } else {
@@ -66,7 +72,9 @@ const _fetch = async (
     return axios(options)
         .then(
             (response: AxiosResponse): Promise<any> => {
-                let contentType: string | null = response.headers['Content-Type'] || response.headers['content-type'];
+                let contentType: string | null =
+                    response.headers['Content-Type'] ||
+                    response.headers['content-type'];
                 if (response.status >= 200 && response.status < 300) {
                     contentType = contentType && contentType.toLowerCase();
 
@@ -81,7 +89,10 @@ const _fetch = async (
                             targetTo.substring(getHostUrl().length);
                         }
 
-                        return Promise.resolve({ redirected: false, to: targetTo });
+                        return Promise.resolve({
+                            redirected: false,
+                            to: targetTo,
+                        });
                     } else {
                         return Promise.resolve(response.data);
                     }
@@ -101,10 +112,17 @@ const _fetch = async (
                     return Promise.reject({ name: 'Unknown error!' });
                 }
 
-                let contentType: string | null = response.headers['Content-Type'] || response.headers['content-type'];
+                let contentType: string | null =
+                    response.headers['Content-Type'] ||
+                    response.headers['content-type'];
                 contentType = contentType && contentType.toLowerCase();
 
-                if (contentType && contentType.toLowerCase().startsWith(RESPONSE_CONTENT_TYPE.HTML)) {
+                if (
+                    contentType &&
+                    contentType
+                        .toLowerCase()
+                        .startsWith(RESPONSE_CONTENT_TYPE.HTML)
+                ) {
                     return Promise.reject({
                         name: `${response.status} ${response.statusText}`,
                         message: '',

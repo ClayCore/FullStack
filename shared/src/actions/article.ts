@@ -53,11 +53,16 @@ const articleActionCreator: ArticleActionCreator = {
                             hasMore: json.hasMore,
                         });
                     } else {
-                        return Promise.reject({ name: '500 Internal Server Error', message: '' });
+                        return Promise.reject({
+                            name: '500 Internal Server Error',
+                            message: '',
+                        });
                     }
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(GET_ARTICLE_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(GET_ARTICLE_FAILED, error)
+                    );
                 });
         };
     },
@@ -74,18 +79,33 @@ const articleActionCreator: ArticleActionCreator = {
                             hasMore: json.hasMore,
                         });
                     } else {
-                        return Promise.reject({ name: '500 Internal Server Error', message: '' });
+                        return Promise.reject({
+                            name: '500 Internal Server Error',
+                            message: '',
+                        });
                     }
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(GET_MORE_ARTICLE_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(GET_MORE_ARTICLE_FAILED, error)
+                    );
                 });
         };
     },
-    addArticle(title: string, content: string, author: string, mentions?: string[]): any {
+    addArticle(
+        title: string,
+        content: string,
+        author: string,
+        mentions?: string[]
+    ): any {
         return (dispatch: Dispatch<any>): void => {
             dispatch({ type: SAVE_ARTICLE_BEGIN });
-            fetch('/api/article/create', { title, content, author, mentions }, 'POST', /*withToken*/ true)
+            fetch(
+                '/api/article/create',
+                { title, content, author, mentions },
+                'POST',
+                /*withToken*/ true
+            )
                 .then((added: Article) => {
                     if (added) {
                         removeEditCacheExec(NEW_ARTICLE_CACHE_ID, dispatch);
@@ -99,11 +119,16 @@ const articleActionCreator: ArticleActionCreator = {
                             },
                         });
                     } else {
-                        return Promise.reject({ name: '500 Internal Server Error', message: 'Broken data.' });
+                        return Promise.reject({
+                            name: '500 Internal Server Error',
+                            message: 'Broken data.',
+                        });
                     }
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(SAVE_ARTICLE_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(SAVE_ARTICLE_FAILED, error)
+                    );
                 });
         };
     },
@@ -124,14 +149,21 @@ const articleActionCreator: ArticleActionCreator = {
                     });
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(SAVE_ARTICLE_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(SAVE_ARTICLE_FAILED, error)
+                    );
                 });
         };
     },
     removeArticle(id: string): any {
         return (dispatch: Dispatch<any>): void => {
             dispatch({ type: REMOVE_ARTICLE_BEGIN });
-            fetch(`/api/article/remove/${id}`, undefined, 'GET', /*withToken*/ true)
+            fetch(
+                `/api/article/remove/${id}`,
+                undefined,
+                'GET',
+                /*withToken*/ true
+            )
                 .then((json: any) => {
                     toast().success('toast.article.delete_successfully');
                     removeEditCacheExec(id, dispatch);
@@ -144,13 +176,20 @@ const articleActionCreator: ArticleActionCreator = {
                     });
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(REMOVE_ARTICLE_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(REMOVE_ARTICLE_FAILED, error)
+                    );
                 });
         };
     },
     rateArticle(rating: number, id: string, user: string): any {
         return (dispatch: Dispatch<any>): void => {
-            fetch(`/api/article/rate?id=${id}&rating=${rating}`, undefined, 'GET', /*withToken*/ true)
+            fetch(
+                `/api/article/rate?id=${id}&rating=${rating}`,
+                undefined,
+                'GET',
+                /*withToken*/ true
+            )
                 .then((json: any) => {
                     dispatch({
                         type: RATE_ARTICLE_SUCCESS,
@@ -160,12 +199,17 @@ const articleActionCreator: ArticleActionCreator = {
                     });
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(RATE_ARTICLE_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(RATE_ARTICLE_FAILED, error)
+                    );
                 });
         };
     },
     setEditCache(id: string, cache: ArticleCache): Action {
-        localStorage().setItem(ARTICLE_EDIT_CACHE_KEY_PREFIX + id, JSON.stringify(cache));
+        localStorage().setItem(
+            ARTICLE_EDIT_CACHE_KEY_PREFIX + id,
+            JSON.stringify(cache)
+        );
         return {
             type: SET_EDIT_ARTICLE_CACHE,
             id: id,
@@ -183,7 +227,10 @@ const articleActionCreator: ArticleActionCreator = {
                 .getAllKeys()
                 .then((keys: string[]) => {
                     keys.forEach((key) => {
-                        if (!key || !key.startsWith(ARTICLE_EDIT_CACHE_KEY_PREFIX)) {
+                        if (
+                            !key ||
+                            !key.startsWith(ARTICLE_EDIT_CACHE_KEY_PREFIX)
+                        ) {
                             return dispatch({
                                 type: IGNORE_CACHE_RESTORE,
                             });
@@ -191,12 +238,20 @@ const articleActionCreator: ArticleActionCreator = {
                         localStorage()
                             .getItem(key)
                             .then((value: string | null) => {
-                                if (!key || !key.startsWith(ARTICLE_EDIT_CACHE_KEY_PREFIX) || !value) {
+                                if (
+                                    !key ||
+                                    !key.startsWith(
+                                        ARTICLE_EDIT_CACHE_KEY_PREFIX
+                                    ) ||
+                                    !value
+                                ) {
                                     return dispatch({
                                         type: IGNORE_CACHE_RESTORE,
                                     });
                                 }
-                                const id: string = key.slice(ARTICLE_EDIT_CACHE_KEY_PREFIX.length);
+                                const id: string = key.slice(
+                                    ARTICLE_EDIT_CACHE_KEY_PREFIX.length
+                                );
                                 dispatch({
                                     type: SET_EDIT_ARTICLE_CACHE,
                                     id: id,

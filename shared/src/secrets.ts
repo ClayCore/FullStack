@@ -1,5 +1,12 @@
 import dotenv from 'dotenv';
-import { HOSTURL_PROD, HOSTURL_DEV, SERVERPORT_DEV, SERVERPORT_PROD, HOSTNAME_PROD, HOSTNAME_DEV } from './hostUrls';
+import {
+    HOSTURL_PROD,
+    HOSTURL_DEV,
+    SERVERPORT_DEV,
+    SERVERPORT_PROD,
+    HOSTNAME_PROD,
+    HOSTNAME_DEV,
+} from './hostUrls';
 
 export const ENVIRONMENT = process.env.NODE_ENV;
 const prod = ENVIRONMENT === 'production';
@@ -19,7 +26,9 @@ if (!SESSION_SECRET) {
 }
 
 if (!MONGODB_URI) {
-    console.error('No mongo connection string. Set MONGODB_URI environment variable.');
+    console.error(
+        'No mongo connection string. Set MONGODB_URI environment variable.'
+    );
     process.exit(1);
 }
 

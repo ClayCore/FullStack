@@ -16,6 +16,9 @@
             "git add"
         ]
     },
+    "dependencies": {
+        "concurrently": "5.3.0"
+    },
     "scripts": {
         "install": "yarn install:server && yarn install:client && yarn install:shared",
         "install:server": "cd server && yarn install",

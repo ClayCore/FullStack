@@ -35,7 +35,10 @@ const initialState: UserState = {
 
 const SEND_OTP_INTERVAL: number = 60;
 
-const userState = (state: UserState = initialState, action: Action): UserState => {
+const userState = (
+    state: UserState = initialState,
+    action: Action
+): UserState => {
     switch (action.type) {
         case LOGOUT:
             return initialState;
@@ -81,14 +84,20 @@ const userState = (state: UserState = initialState, action: Action): UserState =
             return { ...state, uploadedAvatarUrl: undefined };
         case ACKNOWLEDGE_NOTIFICATION_SUCCESS: {
             const cloneNotifications = [...state.notifications];
-            const acknowledged: number = cloneNotifications.findIndex((value: Notification) => value._id === action.id);
+            const acknowledged: number = cloneNotifications.findIndex(
+                (value: Notification) => value._id === action.id
+            );
             if (acknowledged >= 0) {
                 cloneNotifications[acknowledged].acknowledged = true;
             }
             return { ...state, notifications: cloneNotifications };
         }
         case GET_NOTIFICATIONS_SUCCESS:
-            return { ...state, notifications: action.notifications, loading: false };
+            return {
+                ...state,
+                notifications: action.notifications,
+                loading: false,
+            };
         case SEND_OTP_START:
             return {
                 ...state,

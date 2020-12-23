@@ -1,5 +1,10 @@
 import { CORS_WHITELIST } from '@flux/shared/hostUrls';
-import { MONGODB_URI, SESSION_SECRET, SERVER_PORT, ORIGIN_URI } from '@flux/shared/secrets';
+import {
+    MONGODB_URI,
+    SESSION_SECRET,
+    SERVER_PORT,
+    ORIGIN_URI,
+} from '@flux/shared/secrets';
 import { Response, Request, NextFunction } from 'express';
 import bluebird from 'bluebird';
 import compression from 'compression';
@@ -31,7 +36,10 @@ mongoose
         console.log('\tMongoDB is connected succesfully.');
     })
     .catch((err: any) => {
-        console.error('\tMongoDB connection error. Please make sure MongoDB is running. \n\t' + err);
+        console.error(
+            '\tMongoDB connection error. Please make sure MongoDB is running. \n\t' +
+                err
+        );
         process.exit();
     });
 
@@ -41,7 +49,10 @@ app.set('origin_uri', ORIGIN_URI);
 app.use(compression());
 app.use(
     cors({
-        origin: (requestOrigin: string | undefined, callback: (err: Error | null, allow?: boolean) => void): void => {
+        origin: (
+            requestOrigin: string | undefined,
+            callback: (err: Error | null, allow?: boolean) => void
+        ): void => {
             if (requestOrigin && CORS_WHITELIST.indexOf(requestOrigin) === -1) {
                 const message: string =
                     "The CORS policy for this origin doesn't allow access from the particular origin.";
@@ -71,7 +82,11 @@ app.use(passport.session());
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 app.use(function (req: Request, res: Response, next: NextFunction) {
-    console.log(`[${req.method} ${req.originalUrl}] is called, body is ${JSON.stringify(req.body)}`);
+    console.log(
+        `[${req.method} ${req.originalUrl}] is called, body is ${JSON.stringify(
+            req.body
+        )}`
+    );
     next();
 });
 

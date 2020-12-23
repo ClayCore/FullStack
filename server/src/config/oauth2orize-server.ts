@@ -17,7 +17,11 @@ import UserDocument from '@flux/shared/models/User/UserDocument';
 
 const server: OAuth2Server = oauth2orize.createServer();
 
-const issueToken = (clientId: string, userId: string, done: (err: Error | null, token?: string) => void): void => {
+const issueToken = (
+    clientId: string,
+    userId: string,
+    done: (err: Error | null, token?: string) => void
+): void => {
     console.log(`[Issue Token]`);
 
     const token = random.getUid(256);
@@ -36,7 +40,9 @@ const issueToken = (clientId: string, userId: string, done: (err: Error | null, 
     });
 };
 
-server.serializeClient((client: Client, done: SerializeClientDoneFunction) => done(null, client.id));
+server.serializeClient((client: Client, done: SerializeClientDoneFunction) =>
+    done(null, client.id)
+);
 server.deserializeClient((id: string, done: DeserializeClientDoneFunction) =>
     done(
         null,
@@ -91,73 +97,101 @@ server.grant(
 );
 
 server.exchange(
-    oauth2orize.exchange.code((client: Client, code: string, redirectUri: string, done: ExchangeDoneFunction) => {
-        console.log(`[OAuth2orize Exchange Code]`);
+    oauth2orize.exchange.code(
+        (
+            client: Client,
+            code: string,
+            redirectUri: string,
+            done: ExchangeDoneFunction
+        ) => {
+            console.log(`[OAuth2orize Exchange Code]`);
 
-        AuthCodeCollection.findOne({ code: code }, (error: Error, authCode: AuthCode) => {
-            if (error) {
-                return done(error);
-            }
-
-            if (client.id !== authCode.clientId) {
-                return done(null, false);
-            }
-
-            if (redirectUri !== authCode.redirectUri) {
-                return done(null, false);
-            }
-
-            issueToken(client.id, authCode.userId, done);
-        });
-    })
-);
-
-server.exchange(
-    oauth2orize.exchange.password(
-        (client: Client, email: string, password: string, scope: string[], done: ExchangeDoneFunction) => {
-            console.log(`[OAuth2orize Exchange Password]`);
-
-            const foundClient: Client | undefined = ClientCollection.find((value: Client) => client.id === value.id);
-            if (!foundClient || foundClient.secret !== client.secret) {
-                return done(null, false);
-            }
-
-            UserCollection.findOne({ email: email.toLowerCase() }, (err: Error, user: UserDocument): void => {
-                if (err) {
-                    return done(err);
-                }
-
-                if (!user) {
-                    return done(null, false);
-                }
-
-                user.comparePassword(password, (err: Error, isMatch: boolean) => {
-                    if (err) {
-                        return done(err);
+            AuthCodeCollection.findOne(
+                { code: code },
+                (error: Error, authCode: AuthCode) => {
+                    if (error) {
+                        return done(error);
                     }
 
-                    if (!isMatch) {
+                    if (client.id !== authCode.clientId) {
                         return done(null, false);
                     }
 
-                    issueToken(client.id, user.id, done);
-                });
-            });
+                    if (redirectUri !== authCode.redirectUri) {
+                        return done(null, false);
+                    }
+
+                    issueToken(client.id, authCode.userId, done);
+                }
+            );
         }
     )
 );
 
 server.exchange(
-    oauth2orize.exchange.clientCredentials((client: Client, scope: string[], done: ExchangeDoneFunction) => {
-        console.log(`[OAuth2orize Exchange Client Credentials]`);
+    oauth2orize.exchange.password(
+        (
+            client: Client,
+            email: string,
+            password: string,
+            scope: string[],
+            done: ExchangeDoneFunction
+        ) => {
+            console.log(`[OAuth2orize Exchange Password]`);
 
-        const foundClient: Client | undefined = ClientCollection.find((value: Client) => client.id === value.id);
-        if (!foundClient || foundClient.secret !== client.secret) {
-            return done(null, false);
+            const foundClient: Client | undefined = ClientCollection.find(
+                (value: Client) => client.id === value.id
+            );
+            if (!foundClient || foundClient.secret !== client.secret) {
+                return done(null, false);
+            }
+
+            UserCollection.findOne(
+                { email: email.toLowerCase() },
+                (err: Error, user: UserDocument): void => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    if (!user) {
+                        return done(null, false);
+                    }
+
+                    user.comparePassword(
+                        password,
+                        (err: Error, isMatch: boolean) => {
+                            if (err) {
+                                return done(err);
+                            }
+
+                            if (!isMatch) {
+                                return done(null, false);
+                            }
+
+                            issueToken(client.id, user.id, done);
+                        }
+                    );
+                }
+            );
         }
+    )
+);
 
-        issueToken(client.id, '', done);
-    })
+server.exchange(
+    oauth2orize.exchange.clientCredentials(
+        (client: Client, scope: string[], done: ExchangeDoneFunction) => {
+            console.log(`[OAuth2orize Exchange Client Credentials]`);
+
+            const foundClient: Client | undefined = ClientCollection.find(
+                (value: Client) => client.id === value.id
+            );
+            if (!foundClient || foundClient.secret !== client.secret) {
+                return done(null, false);
+            }
+
+            issueToken(client.id, '', done);
+        }
+    )
 );
 
 export default server;

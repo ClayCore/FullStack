@@ -4,7 +4,7 @@ import spinner from '@flux/assets/icons/spinner.svg';
 type Props = {};
 type States = {};
 
-class Loader extends React.Component<Props, States> {
+export default class Loader extends React.Component<Props, States> {
     render(): any {
         return (
             <div id="loader-wrapper">
@@ -13,5 +13,3 @@ class Loader extends React.Component<Props, States> {
         );
     }
 }
-
-export default Loader;

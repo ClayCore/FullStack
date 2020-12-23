@@ -50,7 +50,7 @@
         "max-len": [
             "warn",
             {
-                "code": 128,
+                "code": 80,
                 "ignoreStrings": true,
                 "ignoreTemplateLiterals": true,
                 "ignoreComments": true
@@ -60,7 +60,13 @@
         "import/no-extraneous-dependencies": [
             "error",
             {
-                "devDependencies": ["**/*.test.js", "**/*.test.jsx", "**/*.test.ts", "**/*.test.tsx", "src/tests/**/*"]
+                "devDependencies": [
+                    "**/*.test.js",
+                    "**/*.test.jsx",
+                    "**/*.test.ts",
+                    "**/*.test.tsx",
+                    "src/tests/**/*"
+                ]
             }
         ],
         "react/jsx-fragments": "off",

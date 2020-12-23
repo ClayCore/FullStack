@@ -19,7 +19,11 @@ const mailer: Mail = nodemailer.createTransport({
     },
 });
 
-export const sendEmail = (to: string, subject: string, content: string): Promise<SentMessageInfo> => {
+export const sendEmail = (
+    to: string,
+    subject: string,
+    content: string
+): Promise<SentMessageInfo> => {
     const mail_options: Mail.Options = {
         to: to,
         from: SMTP_AUTH_ACCOUNT,

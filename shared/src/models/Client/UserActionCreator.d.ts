@@ -21,7 +21,16 @@ export default interface UserActionCreator {
         gender: Gender,
         invitationCode?: string
     ): any;
-    updatePassword(oldPassword: string, password: string, confirmPassword: string): any;
-    resetPassword(email: string, OTP: string, password: string, confirmPassword: string): any;
+    updatePassword(
+        oldPassword: string,
+        password: string,
+        confirmPassword: string
+    ): any;
+    resetPassword(
+        email: string,
+        OTP: string,
+        password: string,
+        confirmPassword: string
+    ): any;
     sendOtp(email: string): any;
 }

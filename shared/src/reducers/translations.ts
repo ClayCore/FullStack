@@ -6,7 +6,10 @@ import Translation from '../models/Translation';
 const initialState: Translation = EnUS;
 
 // TODO: add more translations.
-const translations = (state: Translation = initialState, action: any): Translation => {
+const translations = (
+    state: Translation = initialState,
+    action: any
+): Translation => {
     switch (action.type) {
         case SET_LOCALE:
             switch (_.toLower(action.locale)) {

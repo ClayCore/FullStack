@@ -1,4 +1,7 @@
-import { ADD_COMMENT_SUCCESS, REMOVE_COMMENT_SUCCESS } from '../actions/comment';
+import {
+    ADD_COMMENT_SUCCESS,
+    REMOVE_COMMENT_SUCCESS,
+} from '../actions/comment';
 import { AnyAction as Action } from 'redux';
 import {
     GET_ARTICLE_SUCCESS,
@@ -32,7 +35,10 @@ const initialState: ArticleState = {
     editCache: {},
 };
 
-const article = (state: ArticleState = initialState, action: Action): ArticleState => {
+const article = (
+    state: ArticleState = initialState,
+    action: Action
+): ArticleState => {
     switch (action.type) {
         case GET_ARTICLE_BEGIN:
         case SAVE_ARTICLE_BEGIN:
@@ -57,7 +63,12 @@ const article = (state: ArticleState = initialState, action: Action): ArticleSta
             };
         case SAVE_ARTICLE_SUCCESS:
             // merge the added/updated article instantly, without waiting for the article list fetching
-            return { ...state, valid: false, loading: false, data: [...state.data, action.article] };
+            return {
+                ...state,
+                valid: false,
+                loading: false,
+                data: [...state.data, action.article],
+            };
         case REMOVE_ARTICLE_SUCCESS:
         case UPDATE_PROFILE_SUCCESS:
             return { ...state, valid: false, loading: false };
@@ -80,23 +91,31 @@ const article = (state: ArticleState = initialState, action: Action): ArticleSta
             };
         case RATE_ARTICLE_SUCCESS:
             const cloneData: Article[] = [...state.data];
-            const index: number = cloneData.findIndex((article: Article) => article._id === action.article);
+            const index: number = cloneData.findIndex(
+                (article: Article) => article._id === action.article
+            );
             if (index >= 0) {
                 if (action.rating === 1) {
                     cloneData[index].likes.push(action.user);
                 } else {
-                    const toRemove: number = cloneData[index].likes.findIndex((value: string) => value === action.user);
+                    const toRemove: number = cloneData[index].likes.findIndex(
+                        (value: string) => value === action.user
+                    );
                     cloneData[index].likes.splice(toRemove, 1);
                 }
             }
             return { ...state, data: cloneData };
         case SET_EDIT_ARTICLE_CACHE: {
-            const cloneCache: { [id: string]: ArticleCache } = { ...state.editCache };
+            const cloneCache: { [id: string]: ArticleCache } = {
+                ...state.editCache,
+            };
             cloneCache[action.id] = action.cache;
             return { ...state, editCache: cloneCache };
         }
         case REMOVE_EDIT_ARTICLE_CACHE: {
-            const cloneCache: { [id: string]: ArticleCache } = { ...state.editCache };
+            const cloneCache: { [id: string]: ArticleCache } = {
+                ...state.editCache,
+            };
             delete cloneCache[action.id];
             return { ...state, editCache: cloneCache };
         }

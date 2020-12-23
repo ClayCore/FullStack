@@ -4,9 +4,12 @@ import fetch from '../fetch';
 import NotificationActionCreator from '../models/Client/NotificationActionCreator';
 import NotificationResponse from '../models/Response/NotificationResponse';
 
-export const ACKNOWLEDGE_NOTIFICATION_BEGIN: string = 'ACKNOWLEDGE_NOTIFICATION_BEGIN';
-export const ACKNOWLEDGE_NOTIFICATION_SUCCESS: string = 'ACKNOWLEDGE_NOTIFICATION_SUCCESS';
-export const ACKNOWLEDGE_NOTIFICATION_FAILED: string = 'ACKNOWLEDGE_NOTIFICATION_FAILED';
+export const ACKNOWLEDGE_NOTIFICATION_BEGIN: string =
+    'ACKNOWLEDGE_NOTIFICATION_BEGIN';
+export const ACKNOWLEDGE_NOTIFICATION_SUCCESS: string =
+    'ACKNOWLEDGE_NOTIFICATION_SUCCESS';
+export const ACKNOWLEDGE_NOTIFICATION_FAILED: string =
+    'ACKNOWLEDGE_NOTIFICATION_FAILED';
 export const GET_NOTIFICATIONS_BEGIN: string = 'GET_NOTIFICATIONS_BEGIN';
 export const GET_NOTIFICATIONS_SUCCESS: string = 'GET_NOTIFICATIONS_SUCCESS';
 export const GET_NOTIFICATIONS_FAILED: string = 'GET_NOTIFICATIONS_FAILED';
@@ -23,7 +26,12 @@ const notificationActionCreator: NotificationActionCreator = {
                     });
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(ACKNOWLEDGE_NOTIFICATION_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(
+                            ACKNOWLEDGE_NOTIFICATION_FAILED,
+                            error
+                        )
+                    );
                 });
         };
     },
@@ -38,11 +46,19 @@ const notificationActionCreator: NotificationActionCreator = {
                             notifications: json.data,
                         });
                     } else {
-                        return Promise.reject({ name: '500 Internal Server Error', message: '' });
+                        return Promise.reject({
+                            name: '500 Internal Server Error',
+                            message: '',
+                        });
                     }
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(GET_NOTIFICATIONS_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(
+                            GET_NOTIFICATIONS_FAILED,
+                            error
+                        )
+                    );
                 });
         };
     },

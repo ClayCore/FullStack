@@ -1,11 +1,22 @@
 import { AnyAction as Action } from 'redux';
-import { CONSENT_REQUEST_SUCCESS, AUTHENTICATE_SUCCESS, LOGIN_SUCCESS, UPDATE_PROFILE_SUCCESS } from '../actions/user';
-import { GET_ARTICLE_SUCCESS, GET_MORE_ARTICLE_SUCCESS } from '../actions/article';
+import {
+    CONSENT_REQUEST_SUCCESS,
+    AUTHENTICATE_SUCCESS,
+    LOGIN_SUCCESS,
+    UPDATE_PROFILE_SUCCESS,
+} from '../actions/user';
+import {
+    GET_ARTICLE_SUCCESS,
+    GET_MORE_ARTICLE_SUCCESS,
+} from '../actions/article';
 import User from '../models/User';
 
 const initialState: { [id: string]: User } = {};
 
-const userDictionary = (state: { [id: string]: User } = initialState, action: Action): { [id: string]: User } => {
+const userDictionary = (
+    state: { [id: string]: User } = initialState,
+    action: Action
+): { [id: string]: User } => {
     switch (action.type) {
         case GET_ARTICLE_SUCCESS:
         case GET_MORE_ARTICLE_SUCCESS:

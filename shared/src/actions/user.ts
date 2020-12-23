@@ -62,16 +62,23 @@ const userActionCreator: UserActionCreator = {
                             notifications: [],
                             others: json.others,
                         });
-                        return localStorage().setItem(ACCESS_TOKEN_KEY, json.accessToken);
+                        return localStorage().setItem(
+                            ACCESS_TOKEN_KEY,
+                            json.accessToken
+                        );
                     } else {
-                        return Promise.reject(new Error('toast.user.general_error'));
+                        return Promise.reject(
+                            new Error('toast.user.general_error')
+                        );
                     }
                 })
                 .then(() => {
                     toast().success('toast.user.sign_in_successfully');
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(CONSENT_REQUEST_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(CONSENT_REQUEST_FAILED, error)
+                    );
                 });
         };
     },
@@ -106,14 +113,20 @@ const userActionCreator: UserActionCreator = {
                 })
                 .catch((error: Error) => {
                     localStorage().setItem(ACCESS_TOKEN_KEY, '');
-                    dispatch(actions.handleFetchError(AUTHENTICATE_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(AUTHENTICATE_FAILED, error)
+                    );
                 });
         };
     },
     login(email: string, password: string): any {
         return (dispatch: Dispatch<any>): any => {
             dispatch({ type: USER_REQUEST_START });
-            return fetch('/oauth2/login', { email: email, password: password }, 'POST')
+            return fetch(
+                '/oauth2/login',
+                { email: email, password: password },
+                'POST'
+            )
                 .then((json: AuthenticationResponse | RedirectTask) => {
                     const response = json as AuthenticationResponse;
                     const task = json as RedirectTask;
@@ -124,14 +137,19 @@ const userActionCreator: UserActionCreator = {
                             notifications: response.notifications,
                             others: response.others,
                         });
-                        return localStorage().setItem(ACCESS_TOKEN_KEY, response.accessToken);
+                        return localStorage().setItem(
+                            ACCESS_TOKEN_KEY,
+                            response.accessToken
+                        );
                     } else if (!task.redirected && task.to) {
                         dispatch({
                             type: SIGN_UP_SUCCESS,
                             redirectTask: task,
                         });
                     } else {
-                        return Promise.reject(new Error('toast.user.general_error'));
+                        return Promise.reject(
+                            new Error('toast.user.general_error')
+                        );
                     }
                 })
                 .then(() => {
@@ -167,11 +185,15 @@ const userActionCreator: UserActionCreator = {
                         });
                         toast().success('toast.user.update_successfully');
                     } else {
-                        return Promise.reject(new Error('toast.user.update_failed'));
+                        return Promise.reject(
+                            new Error('toast.user.update_failed')
+                        );
                     }
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(UPDATE_PROFILE_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(UPDATE_PROFILE_FAILED, error)
+                    );
                 });
         };
     },
@@ -184,7 +206,12 @@ const userActionCreator: UserActionCreator = {
                         return Promise.reject(new Error(INVALID_TOKEN_ERROR));
                     }
                     dispatch({ type: USER_REQUEST_START });
-                    return fetch('/oauth2/preferences', { id, preferences }, 'POST', true);
+                    return fetch(
+                        '/oauth2/preferences',
+                        { id, preferences },
+                        'POST',
+                        true
+                    );
                 })
                 .then((json: Preferences) => {
                     if (json) {
@@ -194,11 +221,18 @@ const userActionCreator: UserActionCreator = {
                         });
                         toast().success('toast.user.update_successfully');
                     } else {
-                        return Promise.reject(new Error('toast.user.update_failed'));
+                        return Promise.reject(
+                            new Error('toast.user.update_failed')
+                        );
                     }
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(UPDATE_PREFERENCES_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(
+                            UPDATE_PREFERENCES_FAILED,
+                            error
+                        )
+                    );
                 });
         };
     },
@@ -221,11 +255,18 @@ const userActionCreator: UserActionCreator = {
                                 url: json.url,
                             });
                         } else {
-                            return Promise.reject(new Error('toast.user.upload_avatar_failed'));
+                            return Promise.reject(
+                                new Error('toast.user.upload_avatar_failed')
+                            );
                         }
                     },
                     (error: Error) => {
-                        dispatch(actions.handleFetchError(UPLOAD_AVATAR_FAILED, error));
+                        dispatch(
+                            actions.handleFetchError(
+                                UPLOAD_AVATAR_FAILED,
+                                error
+                            )
+                        );
                     }
                 );
         };
@@ -271,7 +312,11 @@ const userActionCreator: UserActionCreator = {
                 });
         };
     },
-    updatePassword(oldPassword: string, password: string, confirmPassword: string): any {
+    updatePassword(
+        oldPassword: string,
+        password: string,
+        confirmPassword: string
+    ): any {
         return (dispatch: Dispatch<any>): void => {
             dispatch({ type: UPDATE_PASSWORD_START });
             fetch(
@@ -292,11 +337,18 @@ const userActionCreator: UserActionCreator = {
                     toast().success('toast.user.update_successfully');
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(UPDATE_PASSWORD_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(UPDATE_PASSWORD_FAILED, error)
+                    );
                 });
         };
     },
-    resetPassword(email: string, OTP: string, password: string, confirmPassword: string): any {
+    resetPassword(
+        email: string,
+        OTP: string,
+        password: string,
+        confirmPassword: string
+    ): any {
         return (dispatch: Dispatch<any>): void => {
             dispatch({ type: UPDATE_PASSWORD_START });
             fetch(
@@ -318,7 +370,9 @@ const userActionCreator: UserActionCreator = {
                     toast().success('toast.user.update_successfully');
                 })
                 .catch((error: Error) => {
-                    dispatch(actions.handleFetchError(UPDATE_PASSWORD_FAILED, error));
+                    dispatch(
+                        actions.handleFetchError(UPDATE_PASSWORD_FAILED, error)
+                    );
                 });
         };
     },

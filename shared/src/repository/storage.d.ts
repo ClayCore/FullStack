@@ -5,7 +5,11 @@ export interface Storage {
         containerName: string,
         blobName: string
     ) => Promise<UploadBlobResult>;
-    generateSigningUrlParams: (containerName: string, blobName: string, neverExpire?: boolean) => string;
+    generateSigningUrlParams: (
+        containerName: string,
+        blobName: string,
+        neverExpire?: boolean
+    ) => string;
 }
 
 export interface UploadBlobResult {

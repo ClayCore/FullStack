@@ -4,7 +4,8 @@ import path from 'path';
 
 const STORAGE_ROOT_DIR: string = 'assets';
 const STORAGE_ROOT_PATH: string | undefined =
-    require.main && `${path.dirname(require.main.filename)}/../../${STORAGE_ROOT_DIR}`;
+    require.main &&
+    `${path.dirname(require.main.filename)}/../../${STORAGE_ROOT_DIR}`;
 
 if (!STORAGE_ROOT_PATH) {
     console.error('Local file storage initialize failed!');
@@ -27,11 +28,16 @@ export const uploadBlob = (
             fs.mkdirSync(targetDir);
         }
 
-        const writable: NodeJS.WritableStream = fs.createWriteStream(targetPath);
+        const writable: NodeJS.WritableStream = fs.createWriteStream(
+            targetPath
+        );
         stream
             .pipe(writable)
             .on('finish', () => {
-                resolve({ blobUrl: blobURL, statusCode: 200 } as UploadBlobResult);
+                resolve({
+                    blobUrl: blobURL,
+                    statusCode: 200,
+                } as UploadBlobResult);
             })
             .on('error', (error: any) => {
                 reject(error);
@@ -39,7 +45,11 @@ export const uploadBlob = (
     });
 };
 
-export const generateSigningUrlParams = (containerName: string, blobName: string, neverExpire?: boolean): string => {
+export const generateSigningUrlParams = (
+    containerName: string,
+    blobName: string,
+    neverExpire?: boolean
+): string => {
     console.log(
         `[BlobStorage] Generate signing URL for container: [${containerName}] blob: [${blobName}] neverExpire: [${!!neverExpire}]`
     );

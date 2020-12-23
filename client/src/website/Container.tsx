@@ -5,10 +5,8 @@ type Props = {
 };
 type States = {};
 
-class Container extends React.Component<Props, States> {
+export default class Container extends React.Component<Props, States> {
     render(): any {
         return <main id="wrapper">{this.props.children}</main>;
     }
 }
-
-export default Container;

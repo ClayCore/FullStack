@@ -26,4 +26,7 @@ if (HOSTPORT_PROD === 80) {
 }
 
 export const HOSTURL_PROD = url;
-export const CORS_WHITELIST: string[] = [`${HOSTNAME_ANDROID_LOCAL}:${HOSTPORT_DEV}`, HOSTURL_DEV];
+export const CORS_WHITELIST: string[] = [
+    `${HOSTNAME_ANDROID_LOCAL}:${HOSTPORT_DEV}`,
+    HOSTURL_DEV,
+];

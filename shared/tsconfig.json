@@ -8,7 +8,7 @@
         "isolatedModules": true,
         "jsx": "react",
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
-        "module": "commonjs",
+        "module": "esnext",
         "moduleResolution": "node",
         "noEmit": true,
         "resolveJsonModule": true,
@@ -17,6 +17,7 @@
         "strict": true,
         "target": "ES6",
         "typeRoots": ["node_modules/@types"],
+        "types": ["node"],
         "paths": {
             "~/*": ["./src/*"],
             "@flux/client/*": ["../client/src/*"],

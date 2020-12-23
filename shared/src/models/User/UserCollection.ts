@@ -45,14 +45,18 @@ userSchema.pre('save', function save(next: any) {
             return next(err);
         }
 
-        bcrypt.hash(user.password as string, salt, (err: mongoose.Error, hash: any) => {
-            if (err) {
-                return next(err);
-            }
+        bcrypt.hash(
+            user.password as string,
+            salt,
+            (err: mongoose.Error, hash: any) => {
+                if (err) {
+                    return next(err);
+                }
 
-            user.password = hash;
-            next();
-        });
+                user.password = hash;
+                next();
+            }
+        );
     });
 });
 
@@ -60,7 +64,10 @@ export const postFind = (user: UserDocument, next?: any) => {
     // Add signing params for Avatar Url so that client can consume
     if (user && user.avatarUrl) {
         const avatarFilename: string = getBlobNameFromUrl(user.avatarUrl);
-        user.avatarUrl = `${user.avatarUrl}?${storage.generateSigningUrlParams(CONTAINER_AVATAR, avatarFilename)}`;
+        user.avatarUrl = `${user.avatarUrl}?${storage.generateSigningUrlParams(
+            CONTAINER_AVATAR,
+            avatarFilename
+        )}`;
     }
 
     if (next) {
@@ -75,9 +82,13 @@ const comparePassword: ComparePasswordFunction = function (
     candidatePassword: string,
     cb: (err: mongoose.Error, isMatch: boolean) => void
 ) {
-    bcrypt.compare(candidatePassword, this.password, (err: mongoose.Error, isMatch: boolean) => {
-        cb(err, isMatch);
-    });
+    bcrypt.compare(
+        candidatePassword,
+        this.password,
+        (err: mongoose.Error, isMatch: boolean) => {
+            cb(err, isMatch);
+        }
+    );
 };
 
 userSchema.methods.comparePassword = comparePassword;

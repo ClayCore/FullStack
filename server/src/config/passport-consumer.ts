@@ -17,9 +17,16 @@ passport.use(
             clientSecret: client.secret,
             callbackURL: client.redirectUri,
         },
-        (accessToken: string, refreshToken: string, user: User, verified: VerifyCallback) => {
+        (
+            accessToken: string,
+            refreshToken: string,
+            user: User,
+            verified: VerifyCallback
+        ) => {
             console.log(
-                `Using [OAuth2Strategy]. Using [accessToken]:[user]\n\t[${accessToken}][${JSON.stringify(user)}]`
+                `Using [OAuth2Strategy]. Using [accessToken]:[user]\n\t[${accessToken}][${JSON.stringify(
+                    user
+                )}]`
             );
 
             verified(undefined, user, { accessToken: accessToken });

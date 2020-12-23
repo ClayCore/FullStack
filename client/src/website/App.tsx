@@ -42,7 +42,11 @@ class App extends React.Component<Props, States> {
         return (
             <Container>
                 <Switch>
-                    <Route exact path="/" render={(props) => <Home {...props} />} />
+                    <Route
+                        exact
+                        path="/"
+                        render={(props) => <Home {...props} />}
+                    />
                 </Switch>
             </Container>
         );
