@@ -4,14 +4,13 @@
     "plugins": ["@typescript-eslint", "prettier"],
     "extends": [
         "eslint:recommended",
-        "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:ngrx/recommended",
-        "plugin:rxjs/recommended",
+        "react-app",
         "prettier",
-        "prettier/@typescript-eslint"
+        "prettier/@typescript-eslint",
+        "prettier-react",
+        "plugin:react-hooks/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
     ],
     "parserOptions": {
         "project": "./tsconfig.json"
@@ -51,7 +50,7 @@
         "max-len": [
             "warn",
             {
-                "code": 80,
+                "code": 128,
                 "ignoreStrings": true,
                 "ignoreTemplateLiterals": true,
                 "ignoreComments": true
@@ -61,14 +60,17 @@
         "import/no-extraneous-dependencies": [
             "error",
             {
-                "devDependencies": [
-                    "**/*.test.js",
-                    "**/*.test.jsx",
-                    "**/*.test.ts",
-                    "**/*.test.tsx",
-                    "src/tests/**/*"
-                ]
+                "devDependencies": ["**/*.test.js", "**/*.test.jsx", "**/*.test.ts", "**/*.test.tsx", "src/tests/**/*"]
             }
-        ]
+        ],
+        "react/jsx-fragments": "off",
+        "react/jsx-key": "error",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-boolean-value": "off",
+        "react/prop-types": "off",
+        "react/no-unescaped-entities": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/jsx-wrap-multilines": "off",
+        "react/destructuring-assignment": "off"
     }
 }

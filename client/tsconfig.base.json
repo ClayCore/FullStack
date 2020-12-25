@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "incremental": true,
+        "isolatedModules": true,
+        "importHelpers": true,
+        "downlevelIteration": true,
+        "lib": ["esnext"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "es6",
+        "typeRoots": ["node_modules/@types"],
+        "types": ["node"],
+        "paths": {
+            "@flux/app/*": ["./src/app/*"],
+            "@flux/shared/*": ["../shared/src/*"],
+            "@flux/server/*": ["../server/src/*"],
+            "@flux/assets/*": ["../assets/*"]
+        }
+    },
+    "exclude": ["node_modules", "dist"]
+}
