@@ -6,8 +6,8 @@ import {
 import { Dispatch, bindActionCreators, Action } from 'redux';
 import actions from './actions';
 import ActionCreator from './models/Client/ActionCreator';
-import { injectIntl } from 'react-intl';
 import { withRouter } from 'react-router';
+import { withTranslation } from 'react-i18next';
 
 const mapStateToProps: MapStateToPropsParam<any, any, any> = (
     state: any
@@ -30,7 +30,7 @@ const mergeProps = (stateProps: any, dispatchProps: any, ownProps: any) => {
 };
 
 export default function connectAllProps(Component: React.ComponentClass<any>) {
-    return injectIntl(
+    return withTranslation('common')(
         withRouter(
             connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component)
         )

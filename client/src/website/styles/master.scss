@@ -1,0 +1,43 @@
+@use 'reset';
+@use 'loader';
+@use 'fonts';
+
+@use 'globals' as *;
+
+// All elements prior to the `main display` are basically wrappers
+#root,
+body,
+html {
+    @extend %root-window;
+}
+
+// The main display will be centered
+main#wrapper {
+    @extend %default-center;
+
+    align-items: initial;
+    justify-content: initial;
+}
+
+// Style the page
+div#page {
+    @extend %default-center;
+
+    flex-direction: column;
+
+    // Style the page header
+    header {
+        @extend %default-center;
+
+        font-size: 3rem;
+        width: 100%;
+        height: 20%;
+    }
+
+    main {
+        @extend %default-center;
+
+        width: 100%;
+        height: 10%;
+    }
+}

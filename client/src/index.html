@@ -1,32 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <title>Claymore's Personal Blog</title>
-
-        <base href="/" />
         <meta charset="utf-8" />
-        <meta
-            name="description"
-            content="Claymore's personal blog on various topics."
-        />
-        <meta name="keywords" content="claymore, blog" />
-        <meta name="robots" content="noindex, nofollow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <meta
-            http-equiv="Cache-Control"
-            content="no-cache, no-store, must-revalidate"
-        />
-        <meta http-equiv="Pragma" content="no-cache" />
-        <meta http-equiv="Expires" content="0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Flux Client</title>
+        <!-- TODO: Add favicons and app.manifest -->
     </head>
     <body>
-        <app-root></app-root>
-
-        <noscript
-            >Please enable JavaScript to continue viewing this
-            website.</noscript
-        >
+        <!-- Main entry point of the app -->
+        <div id="root"></div>
+        <!-- Load external icons -->
+        <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
+        <!-- And load the `index.tsx` -->
+        <script src="~/index.tsx"></script>
     </body>
 </html>

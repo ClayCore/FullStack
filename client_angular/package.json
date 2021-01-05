@@ -1,0 +1,71 @@
+{
+    "name": "flux-client",
+    "version": "0.1.0",
+    "private": true,
+    "engines": {
+        "node": "^12.14.1",
+        "npm": "^7.0.15",
+        "yarn": "^1.12.4"
+    },
+    "browserslist": [
+        "since 2019-12"
+    ],
+    "scripts": {
+        "build": "yarn lint && ng build",
+        "start": "yarn lint && ng serve",
+        "lint": "eslint"
+    },
+    "dependencies": {
+        "@fortawesome/angular-fontawesome": "0.8.0",
+        "@angular-devkit/build-angular": "0.1100.5",
+        "@angular-eslint/builder": "0.7.0-beta.1",
+        "@angular-eslint/eslint-plugin": "0.7.0-beta.1",
+        "@angular-eslint/eslint-plugin-template": "0.7.0-beta.1",
+        "@angular-eslint/schematics": "0.7.0-beta.1",
+        "@angular-eslint/template-parser": "0.7.0-beta.1",
+        "@angular/animations": "11.0.5",
+        "@angular/cli": "11.0.5",
+        "@angular/common": "11.0.5",
+        "@angular/compiler": "11.0.5",
+        "@angular/compiler-cli": "11.0.5",
+        "@angular/core": "11.0.5",
+        "@angular/forms": "11.0.5",
+        "@angular/language-service": "11.0.5",
+        "@angular/platform-browser": "11.0.5",
+        "@angular/platform-browser-dynamic": "11.0.5",
+        "@angular/router": "11.0.5",
+        "@angular/service-worker": "11.0.5",
+        "@babel/plugin-proposal-decorators": "^7.12.12",
+        "@nguniversal/express-engine": "^8.1.1",
+        "@nguniversal/module-map-ngfactory-loader": "8.1.1",
+        "@ngx-translate/core": "^11.0.1",
+        "@ngx-translate/http-loader": "^4.0.0",
+        "@types/node": "14.14.14",
+        "axios": "0.21.0",
+        "bluebird": "3.7.2",
+        "core-js": "3.6.5",
+        "eslint": "7.16.0",
+        "eslint-plugin-import": "2.22.1",
+        "eslint-plugin-jsdoc": "30.7.9",
+        "eslint-plugin-ngrx": "1.13.0",
+        "eslint-plugin-prefer-arrow": "1.2.2",
+        "eslint-plugin-prettier": "3.1.4",
+        "eslint-plugin-rxjs": "2.1.5",
+        "ionicons": "5.2.3",
+        "moment": "2.29.1",
+        "ngx-image-cropper": "^1.4.1",
+        "ngx-perfect-scrollbar": "^8.0.0",
+        "ngx-webstorage": "^4.0.1",
+        "prettier": "2.1.2",
+        "prettier-eslint": "11.0.0",
+        "rxjs": "6.6.3",
+        "sass": "1.26.11",
+        "ts-node": "9.1.0",
+        "typescript": "4.0.5",
+        "zone.js": "0.11.3"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.0-0",
+        "babel-plugin-module-resolver": "^4.1.0"
+    }
+}

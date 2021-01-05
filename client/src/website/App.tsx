@@ -1,5 +1,5 @@
-import { Switch, Route } from 'react-router-dom';
 import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
+import { Switch, Route } from 'react-router-dom';
 import connectAllProps from '@flux/shared/connect';
 import Container from './Container';
 import Loader from './Loader';
@@ -35,18 +35,16 @@ class App extends React.Component<Props, States> {
         if (error) {
             return (
                 <Container>
-                    <ErrorPage error={error} />
+                    <ErrorPage error={error} {...this.props} />
                 </Container>
             );
         }
         return (
             <Container>
                 <Switch>
-                    <Route
-                        exact
-                        path="/"
-                        render={(props) => <Home {...props} />}
-                    />
+                    <Route exact path="/">
+                        <Home {...this.props} />
+                    </Route>
                 </Switch>
             </Container>
         );

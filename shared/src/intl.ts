@@ -1,5 +1,4 @@
-import { connect, MapStateToPropsParam } from 'react-redux';
-import { IntlProvider } from 'react-intl';
+import { connect, MapStateToPropsParam, Provider } from 'react-redux';
 
 const mapStateToProps: MapStateToPropsParam<any, any, any> = (
     state: any
@@ -8,4 +7,4 @@ const mapStateToProps: MapStateToPropsParam<any, any, any> = (
     return { locale, messages };
 };
 
-export default connect(mapStateToProps)(IntlProvider);
+export default connect(mapStateToProps)(Provider);
