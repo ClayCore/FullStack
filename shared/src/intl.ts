@@ -1,4 +1,5 @@
-import { connect, MapStateToPropsParam, Provider } from 'react-redux';
+import { connect, MapStateToPropsParam } from 'react-redux';
+import { I18nextProvider } from 'react-i18next';
 
 const mapStateToProps: MapStateToPropsParam<any, any, any> = (
     state: any
@@ -7,4 +8,4 @@ const mapStateToProps: MapStateToPropsParam<any, any, any> = (
     return { locale, messages };
 };
 
-export default connect(mapStateToProps)(Provider);
+export default connect(mapStateToProps)(I18nextProvider);
