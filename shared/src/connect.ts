@@ -9,6 +9,7 @@ import ActionCreator from './models/Client/ActionCreator';
 import { withRouter } from 'react-router';
 import { withTranslation } from 'react-i18next';
 
+// Merge all the props to a given state
 const mapStateToProps: MapStateToPropsParam<any, any, any> = (
     state: any
 ): any => {
@@ -17,6 +18,7 @@ const mapStateToProps: MapStateToPropsParam<any, any, any> = (
     };
 };
 
+// We bind all the dispatch calls to our ActionCreator
 const mapDispatchToProps: MapDispatchToPropsParam<ActionCreator, any> = (
     dispatch: Dispatch<Action>
 ): any => {
@@ -25,10 +27,12 @@ const mapDispatchToProps: MapDispatchToPropsParam<ActionCreator, any> = (
     };
 };
 
+// and we merge all the props to one object
 const mergeProps = (stateProps: any, dispatchProps: any, ownProps: any) => {
     return { ...stateProps, ...dispatchProps, ...ownProps };
 };
 
+// which we pass to all components
 export default function connectAllProps(Component: React.ComponentClass<any>) {
     return withTranslation('common')(
         withRouter(
