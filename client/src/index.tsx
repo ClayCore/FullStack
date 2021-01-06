@@ -10,7 +10,7 @@ import { SET_LOCALE } from '@flux/shared/actions/common';
 import { setHostUrl } from '@flux/shared/fetch';
 import * as serviceWorker from './serviceWorker';
 import App from './website/App';
-import ConnectedIntlProvider from '@flux/shared/intl';
+import TranslationProvider from '@flux/shared/intl';
 import EnUS from '@flux/shared/translations/en-us';
 import i18next from 'i18next';
 import moment from 'moment';
@@ -76,15 +76,18 @@ initStorage(StorageWrapper);
         $('body')!.classList.add('loaded');
     });
 
-    // start rendering
+    // Start rendering the application
+    // FIXME: for some odd reason `TranslationProvider`
+    // which comes from `@flux/shared/connect.ts` does not work at all.
+    // I have no idea why and why it constantly throws errors.
     let entryPoint = $('#root');
     ReactDOM.render(
         <Provider store={store}>
-            <ConnectedIntlProvider i18n={i18next}>
+            <TranslationProvider>
                 <Router>
                     <App />
                 </Router>
-            </ConnectedIntlProvider>
+            </TranslationProvider>
         </Provider>,
         entryPoint
     );
