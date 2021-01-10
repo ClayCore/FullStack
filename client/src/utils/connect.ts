@@ -4,9 +4,8 @@ import {
     connect,
 } from 'react-redux';
 import { Dispatch, bindActionCreators, Action } from 'redux';
-import actions from './actions';
-import ActionCreator from './models/Client/ActionCreator';
-import { withRouter } from 'react-router';
+import actions from '@flux/shared/actions';
+import ActionCreator from '@flux/shared/Models/Client/ActionCreator';
 import { withTranslation } from 'react-i18next';
 
 // Merge all the props to a given state
@@ -35,8 +34,6 @@ const mergeProps = (stateProps: any, dispatchProps: any, ownProps: any) => {
 // which we pass to all components
 export default function connectAllProps(Component: React.ComponentClass<any>) {
     return withTranslation('common')(
-        withRouter(
-            connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component)
-        )
+        connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component)
     );
 }

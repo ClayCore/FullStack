@@ -1,5 +1,5 @@
 import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
-import connectAllProps from '@flux/shared/connect';
+import connectAllProps from '~/utils/connect';
 import React from 'react';
 
 type States = {};

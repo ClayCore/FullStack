@@ -8,9 +8,9 @@ import { initToast } from '@flux/shared/toast';
 import { Provider } from 'react-redux';
 import { SET_LOCALE } from '@flux/shared/actions/common';
 import { setHostUrl } from '@flux/shared/fetch';
+import TranslationProvider from '~/utils/intl';
 import * as serviceWorker from './serviceWorker';
 import App from './website/App';
-import TranslationProvider from '@flux/shared/intl';
 import EnUS from '@flux/shared/translations/en-us';
 import i18next from 'i18next';
 import moment from 'moment';
@@ -28,8 +28,10 @@ if (typeof document === 'undefined') {
 // This has to be set for fetching to work
 const ENV = process.env.NODE_ENV;
 if (ENV === 'development') {
+    serviceWorker.register();
     setHostUrl(HOSTURL_DEV);
 } else {
+    serviceWorker.unregister();
     setHostUrl(HOSTURL_PROD);
 }
 
@@ -83,7 +85,7 @@ initStorage(StorageWrapper);
     let entryPoint = $('#root');
     ReactDOM.render(
         <Provider store={store}>
-            <TranslationProvider>
+            <TranslationProvider i18n={i18next}>
                 <Router>
                     <App />
                 </Router>
@@ -91,6 +93,4 @@ initStorage(StorageWrapper);
         </Provider>,
         entryPoint
     );
-
-    serviceWorker.unregister();
 })();

@@ -1,6 +1,6 @@
 import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
+import connectAllProps from '~/utils/connect';
 import { Switch, Route } from 'react-router-dom';
-import connectAllProps from '@flux/shared/connect';
 import Container from './Container';
 import Loader from './Loader';
 import React from 'react';
