@@ -35,6 +35,7 @@ const _fetch = async (
 
     let completeUrl: string = url;
     if (url && !url.startsWith(getHostUrl())) {
+        console.log(`Fetch HostURL: [${getHostUrl()}] / [${url}]`);
         completeUrl = `${getHostUrl()}${url}`;
     }
 
