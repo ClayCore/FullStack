@@ -45,7 +45,6 @@ mongoose
 
 const app = express();
 app.set('server_port', SERVER_PORT);
-app.set('origin_uri', ORIGIN_URI);
 app.use(compression());
 app.use(
     cors({
