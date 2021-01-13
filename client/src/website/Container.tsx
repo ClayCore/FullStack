@@ -1,12 +1,20 @@
 import React from 'react';
+import Sidebar from './components/layout/Sidebar';
+import Topbar from './components/layout/Topbar';
 
 type Props = {
     children?: React.ReactNode;
 };
-type States = {};
+type State = {};
 
-export default class Container extends React.Component<Props, States> {
+export default class Container extends React.Component<Props, State> {
     render(): any {
-        return <main id="wrapper">{this.props.children}</main>;
+        return (
+            <main id="wrapper">
+                <Sidebar />
+                <Topbar />
+                {this.props.children}
+            </main>
+        );
     }
 }

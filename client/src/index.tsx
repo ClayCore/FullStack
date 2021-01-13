@@ -1,7 +1,7 @@
 import { $ } from '@flux/shared/utils';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { HOSTURL_DEV, HOSTURL_PROD } from '@flux/shared/hostUrls';
-import { I18nextProvider, initReactI18next } from 'react-i18next';
+import { initReactI18next } from 'react-i18next';
 import { initFontLibrary } from './utils';
 import { initStorage } from '@flux/shared/storage';
 import { initToast } from '@flux/shared/toast';
@@ -47,16 +47,6 @@ initToast(new ToastWrapper(store));
 initStorage(StorageWrapper);
 
 (function () {
-    // This will make sure that DOM is loaded.
-    let onReady = function (callback: Function) {
-        let intervalId = window.setInterval(function () {
-            if ($('body') !== undefined) {
-                window.clearInterval(intervalId);
-                callback.call(onReady);
-            }
-        }, 1000);
-    };
-
     // Add all the styles
     require('./website/styles/master.scss');
 
@@ -74,14 +64,7 @@ initStorage(StorageWrapper);
         },
     });
 
-    onReady(function () {
-        $('body')!.classList.add('loaded');
-    });
-
     // Start rendering the application
-    // FIXME: for some odd reason `TranslationProvider`
-    // which comes from `@flux/shared/connect.ts` does not work at all.
-    // I have no idea why and why it constantly throws errors.
     let entryPoint = $('#root');
     ReactDOM.render(
         <Provider store={store}>

@@ -17,27 +17,39 @@ main#wrapper {
 
     align-items: initial;
     justify-content: initial;
-}
 
-// Style the page
-div#page {
-    @extend %default-center;
+    $sidebar-width: 16rem;
 
-    flex-direction: column;
-
-    // Style the page header
-    header {
+    // Sidebar
+    aside#sidebar {
         @extend %default-center;
+        width: $sidebar-width;
+        flex-direction: column;
 
-        font-size: 3rem;
-        width: 100%;
-        height: 20%;
+        background-color: $dark-bgcolor;
+        color: $dark-fgcolor;
     }
 
-    main {
+    // Style the page
+    div#page {
         @extend %default-center;
+        width: calc(100% - #{$sidebar-width});
+        flex-direction: column;
 
-        width: 100%;
-        height: 10%;
+        // Style the page header
+        header {
+            @extend %default-center;
+
+            font-size: 3rem;
+            width: 100%;
+            height: 20%;
+        }
+
+        main {
+            @extend %default-center;
+
+            width: 100%;
+            height: 10%;
+        }
     }
 }

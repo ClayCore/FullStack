@@ -3,18 +3,20 @@ import connectAllProps from '~/utils/connect';
 import { Switch, Route } from 'react-router-dom';
 import Container from './Container';
 import Loader from './Loader';
-import React from 'react';
+import React, { Suspense } from 'react';
+import fetch from '@flux/shared/fetch';
+import { API_VERSION } from '@flux/shared/routes';
 
 import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
 
-type States = {
+type State = {
     interval: number;
     is_loading: boolean;
     error: string | null;
 };
 
-class App extends React.Component<Props, States> {
+class App extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
@@ -35,17 +37,21 @@ class App extends React.Component<Props, States> {
         if (error) {
             return (
                 <Container>
-                    <ErrorPage error={error} {...this.props} />
+                    <Suspense fallback={<Loader />}>
+                        <ErrorPage error={error} {...this.props} />
+                    </Suspense>
                 </Container>
             );
         }
         return (
             <Container>
-                <Switch>
-                    <Route exact path="/">
-                        <Home {...this.props} />
-                    </Route>
-                </Switch>
+                <Suspense fallback={<Loader />}>
+                    <Switch>
+                        <Route exact path="/">
+                            <Home {...this.props} />
+                        </Route>
+                    </Switch>
+                </Suspense>
             </Container>
         );
     }

@@ -2,9 +2,9 @@ import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
 import connectAllProps from '~/utils/connect';
 import React from 'react';
 
-type States = {};
+type State = {};
 
-class Home extends React.Component<Props, States> {
+class Home extends React.Component<Props, State> {
     render(): any {
         const { t, i18n } = this.props;
 
