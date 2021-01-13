@@ -14,7 +14,7 @@ export const SERVERPORT_DEV: number = 3001;
 
 export const HOSTURL_DEV: string = `${HOSTNAME_DEV}:${HOSTPORT_DEV}`;
 
-export const HOSTNAME_PROD: string = '0.0.0.0';
+export const HOSTNAME_PROD: string = 'https://continuum-server.herokuapp.com';
 export const HOSTPORT_PROD: number = normalizePort(80);
 export const SERVERPORT_PROD: number = HOSTPORT_PROD;
 
