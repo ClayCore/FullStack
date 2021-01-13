@@ -33,11 +33,16 @@ const _fetch = async (
         await sleep(2000);
     }
 
+    // FIXME: local fetches result in the wrong port and
+    // production fetches result in two urls.
     let completeUrl: string = url;
     if (url && !url.startsWith(getHostUrl())) {
         console.log(`Fetch HostURL: [${getHostUrl()}] / [${url}]`);
         completeUrl = `${getHostUrl()}${url}`;
     }
+
+    console.log(`CompleteURL: [${completeUrl}]`);
+    console.log(`ArgURL: [${url}]`);
 
     const headers: any = {
         Accept: '*/*',
