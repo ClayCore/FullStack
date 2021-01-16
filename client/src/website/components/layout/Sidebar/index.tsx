@@ -1,12 +1,12 @@
+import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
+import Banner from './Banner';
+import connectAllProps from '~/utils/connect';
+import NavList from './NavList';
 import React from 'react';
 
-import NavList from './NavList';
-import Banner from './Banner';
-
-type Props = {};
 type State = {};
 
-export default class Sidebar extends React.Component<Props, State> {
+class Sidebar extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
     }
@@ -20,3 +20,5 @@ export default class Sidebar extends React.Component<Props, State> {
         );
     }
 }
+
+export default connectAllProps(Sidebar);

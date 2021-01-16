@@ -147,7 +147,6 @@ main#wrapper {
             @extend %default-center;
 
             position: relative;
-            height: calc(100%);
             top: $topbar-height;
 
             flex-direction: column;

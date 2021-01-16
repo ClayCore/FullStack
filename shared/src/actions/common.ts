@@ -11,6 +11,7 @@ export const SET_LOCALE: string = 'SET_LOCALE';
 export const SET_FAB_ACTIONS: string = 'SET_FAB_ACTIONS';
 export const ADD_FAB_ACTION: string = 'ADD_FAB_ACTION';
 export const REMOVE_FAB_ACTION: string = 'REMOVE_FAB_ACTION';
+export const FORWARD_ERROR: string = 'FORWARD_ERROR';
 
 const actions: CommonActionCreator = {
     handleFetchError(type: string, error: Error): Action {
@@ -29,6 +30,17 @@ const actions: CommonActionCreator = {
         }
 
         return { type };
+    },
+    forwardError(error: Error): Action {
+        if (error.message) {
+            toast().error(error.message);
+        } else if (error.name) {
+            toast().error(error.name);
+        }
+
+        return {
+            type: FORWARD_ERROR,
+        };
     },
     resetRedirectTask(): Action {
         return {

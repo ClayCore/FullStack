@@ -1,6 +1,6 @@
 import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
-import connectAllProps from '~/utils/connect';
 import { Switch, Route } from 'react-router-dom';
+import connectAllProps from '~/utils/connect';
 import Container from './Container';
 import Loader from './Loader';
 import React, { Suspense } from 'react';
@@ -12,7 +12,6 @@ import ErrorPage from './pages/ErrorPage';
 type State = {
     interval: number;
     is_loading: boolean;
-    error: Error | undefined;
 };
 
 class App extends React.Component<Props, State> {
@@ -22,12 +21,12 @@ class App extends React.Component<Props, State> {
         this.state = {
             interval: 0,
             is_loading: false,
-            error: undefined,
         };
     }
 
     render(): React.ReactElement<any> {
-        const { is_loading, error } = this.state;
+        const { is_loading } = this.state;
+        const { error } = this.props.state.error;
 
         if (is_loading) {
             return <Loader />;
@@ -65,7 +64,6 @@ class App extends React.Component<Props, State> {
                             render={(props) => <Notifications {...props} />}
                         />
                         <Route
-                            path="/error"
                             render={(props) => (
                                 <ErrorPage {...props} error={notFoundError} />
                             )}

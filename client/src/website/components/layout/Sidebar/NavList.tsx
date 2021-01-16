@@ -1,20 +1,13 @@
-import React from 'react';
+import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
 import { getUid } from '@flux/shared/utils/random';
-import { Link as Anchor } from 'react-router-dom';
-import Icon from '~/website/components/Icon';
-import ErrorPage from '~/website/pages/ErrorPage';
+import connectAllProps from '~/utils/connect';
+import Link from '../Link';
+import React from 'react';
 
-type Props = {};
 type State = {};
-type Link = {
-    target: string;
-    label?: string;
-    desc?: string;
-    icon?: string;
-};
 
-export default class NavList extends React.Component<Props, State> {
-    private links: Array<Link> | null;
+class NavList extends React.Component<Props, State> {
+    private links?: Array<React.ReactNode>;
 
     constructor(props: Props) {
         super(props);
@@ -22,17 +15,27 @@ export default class NavList extends React.Component<Props, State> {
         this.links = this.generateLinks();
     }
 
-    generateLinks = (): Array<Link> => {
-        let links: Array<Link> = [
-            { target: '/home', label: 'Home', icon: 'home' },
-            { target: '/article', label: 'Articles', icon: 'book' },
-            { target: '/about', label: 'About', icon: 'information-circle' },
+    generateLinks = (): Array<React.ReactNode> => {
+        let links: Array<React.ReactNode> = [
+            <Link target="/home" label="Home" icon="home" key={getUid(16)} />,
+            <Link
+                target="/article"
+                label="Articles"
+                icon="book"
+                key={getUid(16)}
+            />,
+            <Link
+                target="/about"
+                label="About"
+                icon="information-circle"
+                key={getUid(16)}
+            />,
         ];
 
         return links;
     };
 
-    render(): any {
+    render(): React.ReactElement<any> {
         const links = this.links;
 
         if (!links) {
@@ -40,18 +43,11 @@ export default class NavList extends React.Component<Props, State> {
                 name: 'Client-side render failed.',
                 message: 'Failed to generate links.',
             };
-            return <ErrorPage error={error} />;
+            this.props.actions.forwardError(error);
         }
 
-        return (
-            <nav>
-                {links.map((link: Link) => (
-                    <div key={getUid(16)} className="link">
-                        <Icon icon={link?.icon} />
-                        <Anchor to={link.target}>{link?.label}</Anchor>
-                    </div>
-                ))}
-            </nav>
-        );
+        return <nav>{links}</nav>;
     }
 }
+
+export default connectAllProps(NavList);

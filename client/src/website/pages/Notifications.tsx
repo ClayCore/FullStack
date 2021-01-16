@@ -1,12 +1,12 @@
-import React from 'react';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
 import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
+import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import connectAllProps from '~/utils/connect';
+import InteractionType from '@flux/shared/models/InteractionType';
+import Loader from '../Loader';
 import Notification from '@flux/shared/models/Notification';
 import PostType from '@flux/shared/models/PostType';
-import InteractionType from '@flux/shared/models/InteractionType';
-import connectAllProps from '~/utils/connect';
-import Loader from '../Loader';
+import React from 'react';
 import User from '@flux/shared/models/User';
 
 type State = {

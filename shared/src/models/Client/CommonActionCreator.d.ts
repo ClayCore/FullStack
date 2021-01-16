@@ -3,6 +3,7 @@ import FabAction from './FabAction';
 
 export default interface CommonActionCreator {
     handleFetchError(type: string, error: Error): Action;
+    forwardError(error: Error): Action;
     resetRedirectTask(): Action;
     setLocale(locale: string): Action; // Not in use.
     setFabActions(fabActions: FabAction[]): Action;

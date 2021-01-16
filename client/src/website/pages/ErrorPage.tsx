@@ -1,11 +1,8 @@
 import { ComponentProps as IntlProps } from '@flux/shared/models/ComponentProps';
 import connectAllProps from '~/utils/connect';
 import React from 'react';
-import { Location } from 'history';
 
-type LocationProps = Location<State>;
 type Props = IntlProps & {
-    location: LocationProps;
     error?: Error;
 };
 type State = {};

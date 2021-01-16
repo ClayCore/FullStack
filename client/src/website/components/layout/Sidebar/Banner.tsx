@@ -1,16 +1,15 @@
-import React from 'react';
-import fetch from '@flux/shared/fetch';
 import { API_VERSION } from '@flux/shared/routes';
-import { Redirect } from 'react-router';
-import ErrorPage from '~/website/pages/ErrorPage';
+import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
+import connectAllProps from '~/utils/connect';
+import fetch from '@flux/shared/fetch';
+import React from 'react';
 
-type Props = {};
 type State = {
     version?: string;
     error?: Error;
 };
 
-export default class Banner extends React.Component<Props, State> {
+class Banner extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
@@ -43,8 +42,9 @@ export default class Banner extends React.Component<Props, State> {
     render(): any {
         const { version, error } = this.state;
 
-        if (error || !version) {
-            return <ErrorPage error={error} />;
+        if (error !== undefined && !version) {
+            console.log(`BannerError: ${error}`);
+            this.props.actions.forwardError(error as Error);
         }
 
         return (
@@ -55,3 +55,5 @@ export default class Banner extends React.Component<Props, State> {
         );
     }
 }
+
+export default connectAllProps(Banner);
