@@ -6,8 +6,8 @@ import ErrorPage from '~/website/pages/ErrorPage';
 
 type Props = {};
 type State = {
-    version: string | undefined;
-    error: Error | undefined;
+    version?: string;
+    error?: Error;
 };
 
 export default class Banner extends React.Component<Props, State> {

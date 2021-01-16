@@ -1,6 +1,7 @@
 import React from 'react';
 import { getUid } from '@flux/shared/utils/random';
 import { Link as Anchor } from 'react-router-dom';
+import Icon from '~/website/components/Icon';
 import ErrorPage from '~/website/pages/ErrorPage';
 
 type Props = {};
@@ -35,15 +36,18 @@ export default class NavList extends React.Component<Props, State> {
         const links = this.links;
 
         if (!links) {
-            const errorMsg = 'Failed to generate links...';
-            return <ErrorPage error={errorMsg} />;
+            const error: Error = {
+                name: 'Client-side render failed.',
+                message: 'Failed to generate links.',
+            };
+            return <ErrorPage error={error} />;
         }
 
         return (
             <nav>
                 {links.map((link: Link) => (
                     <div key={getUid(16)} className="link">
-                        {React.createElement('ion-icon', { icon: link?.icon })}
+                        <Icon icon={link?.icon} />
                         <Anchor to={link.target}>{link?.label}</Anchor>
                     </div>
                 ))}
