@@ -1,6 +1,5 @@
 import React from 'react';
 import { getUid } from '@flux/shared/utils/random';
-import { IonIcon } from '@ionic/react';
 import { Link as Anchor } from 'react-router-dom';
 import ErrorPage from '~/website/pages/ErrorPage';
 
@@ -44,7 +43,7 @@ export default class NavList extends React.Component<Props, State> {
             <nav>
                 {links.map((link: Link) => (
                     <div key={getUid(16)} className="link">
-                        <IonIcon icon={link?.icon} />
+                        {React.createElement('ion-icon', { icon: link?.icon })}
                         <Anchor to={link.target}>{link?.label}</Anchor>
                     </div>
                 ))}
