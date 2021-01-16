@@ -4,8 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import Container from './Container';
 import Loader from './Loader';
 import React, { Suspense } from 'react';
-import fetch from '@flux/shared/fetch';
-import { API_VERSION } from '@flux/shared/routes';
 
 import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
