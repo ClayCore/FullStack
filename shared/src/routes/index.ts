@@ -1,2 +1,2 @@
 export const API_VERSION: string =
-    'https://continuum-server.herokuapp.com/api/version';
+    'https://claymore-blog.herokuapp.com/api/version';
