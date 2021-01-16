@@ -33,16 +33,17 @@ const _fetch = async (
         await sleep(2000);
     }
 
-    // FIXME: local fetches result in the wrong port and
-    // production fetches result in two urls.
-    let completeUrl: string = url;
-    if (url && !url.startsWith(getHostUrl())) {
-        console.log(`Fetch HostURL: [${getHostUrl()}] / [${url}]`);
-        completeUrl = `${getHostUrl()}${url}`;
+    // Concatenate the URI subdirectory with the hostname
+    // if it wasn't provided
+    let completeUrl: string = '';
+    if (url) {
+        completeUrl = url;
+        console.log(`FetchURL: [${url}]`);
     }
-
-    console.log(`CompleteURL: [${completeUrl}]`);
-    console.log(`ArgURL: [${url}]`);
+    // if (url && !url.startsWith(getHostUrl())) {
+    //     console.log(`Fetch HostURL: [${getHostUrl()}] / [${url}]`);
+    //     completeUrl = `${getHostUrl()}${url}`;
+    // }
 
     const headers: any = {
         Accept: '*/*',

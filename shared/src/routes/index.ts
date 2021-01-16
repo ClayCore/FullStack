@@ -1,1 +1,2 @@
-export const API_VERSION: string = '/api/version';
+export const API_VERSION: string =
+    'https://continuum-server.herokuapp.com/api/version';

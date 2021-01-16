@@ -9,6 +9,8 @@
 body,
 html {
     @extend %root-window;
+
+    background-color: yellow;
 }
 
 // The main display will be centered
@@ -19,37 +21,156 @@ main#wrapper {
     justify-content: initial;
 
     $sidebar-width: 16rem;
+    $topbar-height: 2.5rem;
 
     // Sidebar
     aside#sidebar {
+        @include horizontal-shadow;
         @extend %default-center;
+
+        flex-direction: column;
+        justify-content: flex-start;
         width: $sidebar-width;
-        flex-direction: column;
 
-        background-color: $dark-bgcolor;
-        color: $dark-fgcolor;
-    }
+        background-color: $accent-bg;
+        color: $accent-fg;
 
-    // Style the page
-    div#page {
-        @extend %default-center;
-        width: calc(100% - #{$sidebar-width});
-        flex-direction: column;
+        z-index: 1001;
 
-        // Style the page header
-        header {
+        $banner-height: 8rem;
+
+        div#banner {
             @extend %default-center;
+            box-sizing: border-box;
 
-            font-size: 3rem;
-            width: 100%;
-            height: 20%;
+            height: $banner-height;
+
+            header {
+                @extend %default-center;
+
+                height: 75%;
+
+                font-family: 'Roboto Slab', serif;
+                font-size: 2rem;
+                text-shadow: 2px 2px 0px $shadow-color;
+
+                border-bottom: 2px solid $shadow-color;
+            }
+            section {
+                @extend %default-center;
+
+                height: 25%;
+            }
+
+            border-bottom: 2px solid $shadow-color;
         }
 
-        main {
+        nav {
             @extend %default-center;
 
-            width: 100%;
-            height: 10%;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: calc(100% - #{$banner-height});
+
+            div.link {
+                @extend %default-center;
+                flex-direction: row;
+
+                height: 2.5rem;
+                justify-content: flex-start;
+
+                text-shadow: 2px 2px 2px $shadow-color;
+
+                border-bottom: 1px dashed $shadow-color;
+
+                transition: all 0.1s linear;
+
+                a {
+                    @extend %default-center;
+                    width: 80%;
+
+                    color: $accent-fg;
+
+                    justify-content: flex-start;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 1.2rem;
+                    letter-spacing: 0.1vh;
+                    font-style: italic;
+                    font-weight: 400;
+
+                    text-decoration: none;
+                }
+
+                ion-icon {
+                    @extend %default-center;
+
+                    height: 60%;
+                    width: 20%;
+                }
+            }
+
+            div.link:last-child {
+                border: 0;
+            }
+
+            div.link:hover {
+                background-color: $accent;
+            }
+        }
+    }
+
+    div {
+        @extend %default-center;
+
+        width: calc(100% - #{$sidebar-width});
+        height: calc(100% - #{$topbar-height});
+
+        justify-content: flex-start;
+        flex-direction: column;
+
+        div#topbar {
+            @include vertical-shadow;
+            @extend %default-center;
+
+            width: calc(100% - #{$sidebar-width});
+            position: fixed;
+            top: 0;
+            left: $sidebar-width;
+
+            flex-direction: row;
+            height: $topbar-height;
+
+            background-color: $accent-bg;
+            color: $accent-fg;
+        }
+
+        // Style the page
+        div#page {
+            @extend %default-center;
+
+            position: relative;
+            height: calc(100%);
+            top: $topbar-height;
+
+            flex-direction: column;
+
+            background-color: $main-bg;
+
+            // Style the page header
+            header {
+                @extend %default-center;
+
+                font-size: 3rem;
+                width: 100%;
+                height: 20%;
+            }
+
+            main {
+                @extend %default-center;
+
+                width: 100%;
+                height: 10%;
+            }
         }
     }
 }

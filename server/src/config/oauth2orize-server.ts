@@ -5,7 +5,7 @@ import oauth2orize, {
     ExchangeDoneFunction,
 } from 'oauth2orize';
 import './passport-provider';
-import * as random from '../utils/random';
+import * as random from '@flux/shared/utils/random';
 import AccessToken from '@flux/shared/models/OAuth/AccessToken';
 import AccessTokenCollection from '@flux/shared/models/OAuth/AccessTokenCollection';
 import AuthCode from '@flux/shared/models/OAuth/AuthCode';

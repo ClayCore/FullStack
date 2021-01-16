@@ -24,6 +24,6 @@
             "@flux/assets/*": ["../assets/*"]
         }
     },
-    "include": ["./src/*"],
+    "include": ["./src/*", "../shared/src/utils"],
     "exclude": ["./node_modules/**/*", "./dist/**/*"]
 }

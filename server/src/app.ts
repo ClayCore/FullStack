@@ -10,6 +10,7 @@ import lusca from 'lusca';
 import mongo from 'connect-mongo';
 import mongoose from 'mongoose';
 import passport from 'passport';
+import cookie_parser from 'cookie-parser';
 import session from 'express-session';
 
 import './config/passport-consumer';
@@ -41,6 +42,7 @@ mongoose
 const app = express();
 app.set('server_port', SERVER_PORT);
 app.use(compression());
+app.use(cookie_parser());
 app.use(
     cors({
         origin: (

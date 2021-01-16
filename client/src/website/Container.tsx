@@ -12,8 +12,10 @@ export default class Container extends React.Component<Props, State> {
         return (
             <main id="wrapper">
                 <Sidebar />
-                <Topbar />
-                {this.props.children}
+                <div>
+                    <Topbar />
+                    {this.props.children}
+                </div>
             </main>
         );
     }
