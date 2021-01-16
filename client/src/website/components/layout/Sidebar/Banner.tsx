@@ -2,11 +2,12 @@ import React from 'react';
 import fetch from '@flux/shared/fetch';
 import { API_VERSION } from '@flux/shared/routes';
 import { Redirect } from 'react-router';
+import ErrorPage from '~/website/pages/ErrorPage';
 
 type Props = {};
 type State = {
-    version: string | null;
-    error: string | null;
+    version: string | undefined;
+    error: Error | undefined;
 };
 
 export default class Banner extends React.Component<Props, State> {
@@ -14,8 +15,8 @@ export default class Banner extends React.Component<Props, State> {
         super(props);
 
         this.state = {
-            version: null,
-            error: null,
+            version: undefined,
+            error: undefined,
         };
     }
 
@@ -24,8 +25,12 @@ export default class Banner extends React.Component<Props, State> {
             if (json && json.version) {
                 this.setState({ version: json.version });
             } else {
+                const error: Error = {
+                    name: 'Server-Client connection refused.',
+                    message: 'Failed to fetch app version from server.',
+                };
                 this.setState({
-                    error: 'Failed to fetch app version from server. ',
+                    error: error,
                 });
             }
         });
@@ -38,12 +43,8 @@ export default class Banner extends React.Component<Props, State> {
     render(): any {
         const { version, error } = this.state;
 
-        if (error && !version) {
-            return (
-                <Redirect
-                    to={{ pathname: '/error', state: { errorMsg: error } }}
-                />
-            );
+        if (error || !version) {
+            return <ErrorPage error={error} />;
         }
 
         return (

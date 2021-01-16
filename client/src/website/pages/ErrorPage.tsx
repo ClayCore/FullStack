@@ -6,11 +6,9 @@ import { Location } from 'history';
 type LocationProps = Location<State>;
 type Props = IntlProps & {
     location: LocationProps;
-    error: string;
+    error?: Error;
 };
-type State = {
-    errorMsg: string;
-};
+type State = {};
 
 class ErrorPage extends React.Component<Props, State> {
     constructor(props: Props) {
@@ -18,27 +16,17 @@ class ErrorPage extends React.Component<Props, State> {
     }
 
     render(): any {
-        const errorMsg: string = this.props.location.state.errorMsg;
         const { error } = this.props;
-
-        if (errorMsg && !error) {
-            <div id="page">
-                <header>
-                    <h1>Error!</h1>
-                </header>
-                <main>
-                    <section>{errorMsg}</section>
-                </main>
-            </div>;
-        }
+        const error_name = error?.name;
+        const error_body = error?.message;
 
         return (
             <div id="page">
                 <header>
-                    <h1>Error!</h1>
+                    <h1>{error ? error_name : 'Error!'}</h1>
                 </header>
                 <main>
-                    <section>{this.props.error}</section>
+                    <section>{error && error_body}</section>
                 </main>
             </div>
         );

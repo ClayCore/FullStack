@@ -6,7 +6,7 @@ type State = {};
 
 class Home extends React.Component<Props, State> {
     render(): any {
-        const { t, i18n } = this.props;
+        const { t } = this.props;
 
         return (
             <div id="page">

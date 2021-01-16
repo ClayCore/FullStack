@@ -6,12 +6,13 @@ import Loader from './Loader';
 import React, { Suspense } from 'react';
 
 import Home from './pages/Home';
+import Notifications from './pages/Notifications';
 import ErrorPage from './pages/ErrorPage';
 
 type State = {
     interval: number;
     is_loading: boolean;
-    error: string | null;
+    error: Error | undefined;
 };
 
 class App extends React.Component<Props, State> {
@@ -21,7 +22,7 @@ class App extends React.Component<Props, State> {
         this.state = {
             interval: 0,
             is_loading: false,
-            error: null,
+            error: undefined,
         };
     }
 
@@ -41,13 +42,34 @@ class App extends React.Component<Props, State> {
                 </Container>
             );
         }
+
+        const notFoundError: Error = {
+            name: '404 Not Found',
+            message: `Not found for [${window.location.href}]`,
+        };
         return (
             <Container>
                 <Suspense fallback={<Loader />}>
                     <Switch>
-                        <Route exact path="/">
-                            <Home {...this.props} />
-                        </Route>
+                        <Route
+                            exact
+                            path="/"
+                            render={(props) => <Home {...props} />}
+                        />
+                        <Route
+                            path="/home"
+                            render={(props) => <Home {...props} />}
+                        />
+                        <Route
+                            path="/notifications"
+                            render={(props) => <Notifications {...props} />}
+                        />
+                        <Route
+                            path="/error"
+                            render={(props) => (
+                                <ErrorPage {...props} error={notFoundError} />
+                            )}
+                        />
                     </Switch>
                 </Suspense>
             </Container>

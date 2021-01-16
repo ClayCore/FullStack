@@ -1,8 +1,8 @@
 import React from 'react';
-import { Redirect } from 'react-router';
 import { getUid } from '@flux/shared/utils/random';
 import { IonIcon } from '@ionic/react';
 import { Link as Anchor } from 'react-router-dom';
+import ErrorPage from '~/website/pages/ErrorPage';
 
 type Props = {};
 type State = {};
@@ -35,18 +35,14 @@ export default class NavList extends React.Component<Props, State> {
     render(): any {
         const links = this.links;
 
-        if (!this.links || !links) {
-            let errorMsg = 'Failed to generate links...';
-            return (
-                <Redirect
-                    to={{ pathname: '/error', state: { errorMsg: errorMsg } }}
-                />
-            );
+        if (!links) {
+            const errorMsg = 'Failed to generate links...';
+            return <ErrorPage error={errorMsg} />;
         }
 
         return (
             <nav>
-                {links?.map((link: Link) => (
+                {links.map((link: Link) => (
                     <div key={getUid(16)} className="link">
                         <IonIcon icon={link?.icon} />
                         <Anchor to={link.target}>{link?.label}</Anchor>
