@@ -70,7 +70,7 @@ main#wrapper {
             justify-content: flex-start;
             height: calc(100% - #{$banner-height});
 
-            div.link {
+            a.link {
                 @extend %default-center;
                 flex-direction: row;
 
@@ -78,26 +78,17 @@ main#wrapper {
                 justify-content: flex-start;
 
                 text-shadow: 2px 2px 2px $shadow-color;
+                font-family: 'Roboto', sans-serif;
+                font-size: 1.2rem;
+                letter-spacing: 0.1vh;
+                font-style: italic;
+                font-weight: 400;
+                text-decoration: none;
+                color: $accent-fg;
 
                 border-bottom: 1px dashed $shadow-color;
 
-                transition: all 0.1s linear;
-
-                a {
-                    @extend %default-center;
-                    width: 80%;
-
-                    color: $accent-fg;
-
-                    justify-content: flex-start;
-                    font-family: 'Roboto', sans-serif;
-                    font-size: 1.2rem;
-                    letter-spacing: 0.1vh;
-                    font-style: italic;
-                    font-weight: 400;
-
-                    text-decoration: none;
-                }
+                transition: all 0.1s cubic-bezier(0.6, 0.05, 0.34, 1.01);
 
                 ion-icon {
                     @extend %default-center;
@@ -107,16 +98,18 @@ main#wrapper {
                 }
             }
 
-            div.link:last-child {
+            a.link:last-child {
                 border: 0;
             }
 
-            div.link:hover {
+            a.link:hover {
                 background-color: $accent;
             }
         }
     }
 
+    // The right side of the page is wrapped in an anonymous div
+    // just for ease with the flexbox
     div {
         @extend %default-center;
 
@@ -126,6 +119,7 @@ main#wrapper {
         justify-content: flex-start;
         flex-direction: column;
 
+        // Topbar
         div#topbar {
             @include vertical-shadow;
             @extend %default-center;
@@ -140,9 +134,54 @@ main#wrapper {
 
             background-color: $accent-bg;
             color: $accent-fg;
+
+            span.clock {
+                @extend %default-center;
+
+                width: 10%;
+            }
+
+            nav {
+                @extend %default-center;
+
+                flex-direction: row;
+                justify-content: flex-end;
+                position: fixed;
+                right: 0;
+                width: calc(#{$sidebar-width} * 3 / 2);
+                height: $topbar-height;
+
+                a.link {
+                    @extend %default-center;
+                    flex-direction: row;
+
+                    max-width: 6rem;
+
+                    text-shadow: 2px 2px 2px $shadow-color;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 1.2rem;
+                    letter-spacing: 0.1vh;
+                    font-style: italic;
+                    font-weight: 400;
+                    text-decoration: none;
+                    color: $accent-fg;
+
+                    border-right: 1px dashed $shadow-color;
+
+                    transition: all 0.1s cubic-bezier(0.6, 0.05, 0.34, 1.01);
+                }
+
+                a.link:last-child {
+                    border: 0;
+                }
+
+                a.link:hover {
+                    background-color: $accent;
+                }
+            }
         }
 
-        // Style the page
+        // Page content itself
         div#page {
             @extend %default-center;
 

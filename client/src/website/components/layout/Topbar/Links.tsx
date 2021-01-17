@@ -5,16 +5,15 @@ import React from 'react';
 
 type State = {};
 
-class NavList extends React.Component<Props, State> {
+class Links extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
     }
 
     getNav = (): Array<React.ReactNode> => {
         let linkTypes: Array<any> = [
-            { target: '/home', label: 'Home', icon: 'home' },
-            { target: '/article', label: 'Articles', icon: 'book' },
-            { target: '/about', label: 'About', icon: 'information-circle' },
+            { target: '/register', label: 'Register' },
+            { target: '/login', label: 'Login' },
         ];
         let links = generateLinks(linkTypes);
 
@@ -26,4 +25,4 @@ class NavList extends React.Component<Props, State> {
     }
 }
 
-export default connectAllProps(NavList);
+export default connectAllProps(Links);
