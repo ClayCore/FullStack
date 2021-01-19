@@ -18,7 +18,7 @@ class Topbar extends React.Component<Props, State> {
         return now;
     };
 
-    render(): any {
+    render(): React.ReactElement<any> {
         return (
             <div id="topbar">
                 <span className="clock">{this.getTime()}</span>

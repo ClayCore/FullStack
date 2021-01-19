@@ -11,7 +11,7 @@ class Sidebar extends React.Component<Props, State> {
         super(props);
     }
 
-    render(): any {
+    render(): React.ReactElement<any> {
         return (
             <aside id="sidebar">
                 <Banner />

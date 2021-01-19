@@ -14,13 +14,20 @@ const TRANSLATION: Translation = {
         // App information
         app: {
             name: 'Flux',
-            footer: 'Copyright © 2020 Company, Inc. All Rights Reserved.',
+            footer: 'Copyright © 2020 Claymore, All Rights Reserved.',
             connect_error: 'Failed to fetch',
         },
 
         // Pages
         page: {
-            home: { title: 'Home' },
+            home: {
+                title: 'Home',
+                header: "Claymore's Personal Website",
+                articles: 'Articles',
+                projects: 'Projects',
+                music: 'Music',
+                recently: 'Recently updated',
+            },
             about: {
                 title: 'About',
                 introduction: 'The Flux App project.',
@@ -70,6 +77,7 @@ const TRANSLATION: Translation = {
             },
 
             article: {
+                title: 'Articles',
                 add: 'Add Article',
                 edit: 'Edit Article',
                 preview: 'Preview',

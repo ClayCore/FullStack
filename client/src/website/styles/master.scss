@@ -2,6 +2,7 @@
 @use 'loader';
 @use 'fonts';
 
+@use 'variables' as *;
 @use 'globals' as *;
 
 // All elements prior to the `main display` are basically wrappers
@@ -119,6 +120,8 @@ main#wrapper {
         justify-content: flex-start;
         flex-direction: column;
 
+        z-index: 1000;
+
         // Topbar
         div#topbar {
             @include vertical-shadow;
@@ -135,6 +138,8 @@ main#wrapper {
             background-color: $accent-bg;
             color: $accent-fg;
 
+            z-index: 999;
+
             span.clock {
                 @extend %default-center;
 
@@ -149,34 +154,32 @@ main#wrapper {
                 position: fixed;
                 right: 0;
                 width: calc(#{$sidebar-width} * 3 / 2);
-                height: $topbar-height;
+                height: calc(#{$topbar-height} - 0.5rem);
 
                 a.link {
                     @extend %default-center;
                     flex-direction: row;
 
-                    max-width: 6rem;
+                    max-width: 25%;
+                    margin-right: 0.5vmax;
 
                     text-shadow: 2px 2px 2px $shadow-color;
                     font-family: 'Roboto', sans-serif;
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                     letter-spacing: 0.1vh;
-                    font-style: italic;
-                    font-weight: 400;
+                    font-weight: 600;
                     text-decoration: none;
-                    color: $accent-fg;
+                    color: $accent;
 
-                    border-right: 1px dashed $shadow-color;
+                    border-radius: 0.4rem;
+                    border: 0.2rem solid $accent;
 
                     transition: all 0.1s cubic-bezier(0.6, 0.05, 0.34, 1.01);
                 }
 
-                a.link:last-child {
-                    border: 0;
-                }
-
                 a.link:hover {
-                    background-color: $accent;
+                    color: $accent-fg;
+                    border-color: $accent-fg;
                 }
             }
         }
@@ -192,20 +195,88 @@ main#wrapper {
 
             background-color: $main-bg;
 
+            z-index: 998;
+
             // Style the page header
             header {
                 @extend %default-center;
 
                 font-size: 3rem;
                 width: 100%;
-                height: 20%;
+                height: 10%;
             }
 
             main {
                 @extend %default-center;
 
+                flex-direction: row;
+
                 width: 100%;
-                height: 10%;
+                height: 80%;
+
+                section.tile {
+                    @extend %default-center;
+
+                    align-items: flex-start;
+
+                    width: 25%;
+                    height: 60%;
+
+                    border-radius: 0.3vmax;
+                    margin-left: 1rem;
+                    margin-right: 1rem;
+                    padding: 1rem;
+
+                    border: 0.2rem solid $accent;
+
+                    fieldset {
+                        @extend %default-center;
+
+                        flex-direction: column;
+                        justify-content: flex-start;
+
+                        header {
+                            @extend %default-center;
+
+                            height: 2rem;
+                            width: 100%;
+
+                            align-items: flex-start;
+                            justify-content: flex-start;
+
+                            font-size: 1.4rem;
+                            font-weight: bold;
+
+                            border-bottom: 0.15rem solid rgba($accent, 0.6);
+                        }
+
+                        div {
+                            @extend %default-center;
+
+                            justify-content: center;
+                            align-items: flex-start;
+
+                            width: 100%;
+                            padding-top: 1rem;
+                            height: 1.5rem;
+
+                            font-size: 1.1rem;
+                        }
+                    }
+                }
+            }
+
+            footer {
+                @extend %default-center;
+
+                position: fixed;
+                bottom: 0;
+
+                width: 100%;
+                height: 2rem;
+
+                background-color: $accent-bg;
+                color: $accent-fg;
             }
         }
     }

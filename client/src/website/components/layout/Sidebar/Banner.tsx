@@ -39,7 +39,7 @@ class Banner extends React.Component<Props, State> {
         this.getVersion();
     };
 
-    render(): any {
+    render(): React.ReactElement<any> {
         const { version, error } = this.state;
 
         if (error !== undefined && !version) {

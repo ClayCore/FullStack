@@ -11,10 +11,19 @@ class NavList extends React.Component<Props, State> {
     }
 
     getNav = (): Array<React.ReactNode> => {
+        const { t } = this.props;
         let linkTypes: Array<any> = [
-            { target: '/home', label: 'Home', icon: 'home' },
-            { target: '/article', label: 'Articles', icon: 'book' },
-            { target: '/about', label: 'About', icon: 'information-circle' },
+            { target: '/home', label: t('page.home.title'), icon: 'home' },
+            {
+                target: '/article',
+                label: t('page.article.title'),
+                icon: 'book',
+            },
+            {
+                target: '/about',
+                label: t('page.about.title'),
+                icon: 'information-circle',
+            },
         ];
         let links = generateLinks(linkTypes);
 

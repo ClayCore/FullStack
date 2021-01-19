@@ -24,7 +24,7 @@ class Icon extends React.Component<Props, State> {
             };
             this.props.actions.forwardError(error);
 
-            return <div></div>;
+            return <div>Missing icon</div>;
         }
     }
 }

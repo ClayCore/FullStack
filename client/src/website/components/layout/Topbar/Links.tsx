@@ -11,9 +11,10 @@ class Links extends React.Component<Props, State> {
     }
 
     getNav = (): Array<React.ReactNode> => {
+        const { t } = this.props;
         let linkTypes: Array<any> = [
-            { target: '/register', label: 'Register' },
-            { target: '/login', label: 'Login' },
+            { target: '/signup', label: t('page.me.sign_up') },
+            { target: '/login', label: t('page.me.login') },
         ];
         let links = generateLinks(linkTypes);
 
