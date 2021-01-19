@@ -1,6 +1,7 @@
 import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
 import connectAllProps from '~/utils/connect';
 import Footer from '../components/layout/Footer';
+import Tile from '../components/layout/Tile';
 import React from 'react';
 
 type State = {};
@@ -13,24 +14,18 @@ class Home extends React.Component<Props, State> {
             <div id="page">
                 <header>{t('page.home.header')}</header>
                 <main>
-                    <section className="tile">
-                        <fieldset>
-                            <header>{t('page.home.articles')}</header>
-                            <div>{t('page.home.recently')}:</div>
-                        </fieldset>
-                    </section>
-                    <section className="tile">
-                        <fieldset>
-                            <header>{t('page.home.projects')}</header>
-                            <div>{t('page.home.recently')}:</div>
-                        </fieldset>
-                    </section>
-                    <section className="tile">
-                        <fieldset>
-                            <header>{t('page.home.music')}</header>
-                            <div>{t('page.home.recently')}:</div>
-                        </fieldset>
-                    </section>
+                    <Tile
+                        title="page.home.articles"
+                        subtitle="page.home.recently"
+                    />
+                    <Tile
+                        title="page.home.projects"
+                        subtitle="page.home.recently"
+                    />
+                    <Tile
+                        title="page.home.music"
+                        subtitle="page.home.recently"
+                    />
                 </main>
                 <Footer />
             </div>

@@ -1,6 +1,6 @@
 {
     "name": "flux-app-server",
-    "version": "0.1.0-alpha2",
+    "version": "0.1.0-alpha3",
     "private": true,
     "main": "./src/server.ts",
     "engines": {

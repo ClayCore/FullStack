@@ -250,7 +250,7 @@ main#wrapper {
                             border-bottom: 0.15rem solid rgba($accent, 0.6);
                         }
 
-                        div {
+                        div.subtitle {
                             @extend %default-center;
 
                             justify-content: center;
