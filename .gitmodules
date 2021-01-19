@@ -1,6 +1,3 @@
-[submodule "svg"]
-    path = tools/svg
-    url = https://gitlab.com/lunarium_lab/rust-svg
 [submodule "tools/svg"]
 	path = tools/svg
 	url = https://gitlab.com/lunarium_lab/rust-svg
