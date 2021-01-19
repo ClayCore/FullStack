@@ -8,6 +8,7 @@ import Notification from '@flux/shared/models/Notification';
 import PostType from '@flux/shared/models/PostType';
 import React from 'react';
 import User from '@flux/shared/models/User';
+import UserAvatar from '../components/user/UserAvatar';
 
 type State = {
     loadedAll: boolean;
@@ -97,7 +98,7 @@ class Notifications extends React.Component<Props, State> {
 
         return (
             <div className="message">
-                {/* <UserAvatar user={subject} /> */}
+                <UserAvatar user={subject} />
                 <span>
                     <b>{subject.name}</b>
                     {this.getEventMessage(notification)}

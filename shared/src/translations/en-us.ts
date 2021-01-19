@@ -29,9 +29,11 @@ const TRANSLATION: Translation = {
                 recently: 'Recently updated',
             },
             about: {
-                title: 'About',
-                introduction: 'The Flux App project.',
-                learn_more: 'Learn More',
+                title: 'About me',
+                introduction:
+                    "Hi, I'm Marek. I'm a self-taught web developer and music producer.",
+                learn_more:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in lorem scelerisque, finibus diam ac, laoreet nunc. Vivamus at lorem dui. Suspendisse tempor varius mauris nec dictum. Praesent efficitur nunc eu turpis blandit posuere. Nulla erat augue, finibus a ornare vel, dictum nec orci. Nulla non nisi convallis, euismod ipsum sit amet, aliquam ligula. Morbi vehicula nec metus vitae porttitor. Morbi vulputate, sapien nec blandit bibendum, leo ex dictum eros, ac egestas leo metus non nisl. Praesent accumsan nec velit a tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris sollicitudin mi vitae accumsan hendrerit. Vestibulum ultricies euismod libero, eget accumsan nunc elementum eu. Praesent commodo ex risus, et fringilla leo volutpat lacinia. Sed maximus, ex in accumsan consequat, tellus arcu posuere mi, id dignissim mauris purus quis nisi. Ut in pellentesque dui, quis varius ante',
             },
             me: {
                 title: 'Me',

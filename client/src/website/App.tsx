@@ -7,7 +7,8 @@ import React, { Suspense } from 'react';
 
 import Home from './pages/Home';
 import Notifications from './pages/Notifications';
-import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './pages/Error';
+import About from './pages/About';
 
 type State = {
     interval: number;
@@ -62,6 +63,10 @@ class App extends React.Component<Props, State> {
                         <Route
                             path="/notifications"
                             render={(props) => <Notifications {...props} />}
+                        />
+                        <Route
+                            path="/about"
+                            render={(props) => <About {...props} />}
                         />
                         <Route
                             render={(props) => (

@@ -202,6 +202,7 @@ main#wrapper {
                 @extend %default-center;
 
                 font-size: 3rem;
+                font-weight: bold;
                 width: 100%;
                 height: 10%;
             }
@@ -214,6 +215,43 @@ main#wrapper {
                 width: 100%;
                 height: 80%;
 
+                section.text-section {
+                    @extend %default-center;
+
+                    flex-direction: column;
+                    justify-content: flex-start;
+
+                    width: 90%;
+                    height: 90%;
+
+                    border-radius: 1rem;
+                    margin-left: 1rem;
+                    margin-right: 1rem;
+                    padding: 1rem;
+
+                    box-shadow: 3px 3px 8px 0px $shadow-color;
+
+                    header.text-heading {
+                        @extend %default-center;
+
+                        justify-content: flex-start;
+
+                        width: 100%;
+                        height: 3rem;
+                        font-size: 1.5rem;
+                        font-weight: normal;
+                    }
+
+                    article {
+                        @extend %default-center;
+
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        margin-top: 1rem;
+                        line-height: 1.8rem;
+                    }
+                }
+
                 section.tile {
                     @extend %default-center;
 
@@ -222,7 +260,7 @@ main#wrapper {
                     width: 25%;
                     height: 60%;
 
-                    border-radius: 0.3vmax;
+                    border-radius: 0.3rem;
                     margin-left: 1rem;
                     margin-right: 1rem;
                     padding: 1rem;
