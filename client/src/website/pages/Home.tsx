@@ -7,6 +7,12 @@ import React from 'react';
 type State = {};
 
 class Home extends React.Component<Props, State> {
+    componentDidMount() {
+        if (!this.props.state.articleState.valid) {
+            this.props.actions.getArticles();
+        }
+    }
+
     render(): any {
         const { t } = this.props;
 
@@ -17,6 +23,7 @@ class Home extends React.Component<Props, State> {
                     <Tile
                         title="page.home.articles"
                         subtitle="page.home.recently"
+                        data={this.props.state.articleState.data}
                     />
                     <Tile
                         title="page.home.projects"

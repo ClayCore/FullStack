@@ -1,11 +1,11 @@
 import { Dispatch, AnyAction as Action } from 'redux';
 import { getStorage as localStorage } from '../storage';
+import { getToast as toast } from '../toast';
 import actions from './common';
 import Article from '../models/Article';
 import ArticleActionCreator from '../models/Client/ArticleActionCreator';
 import ArticleCache from '../models/Client/ArticleCache';
 import ArticleResponse from '../models/Response/ArticleResponse';
-import { getToast as toast } from '../toast';
 import fetch from '../fetch';
 
 export const SAVE_ARTICLE_BEGIN: string = 'SAVE_ARTICLE_BEGIN';

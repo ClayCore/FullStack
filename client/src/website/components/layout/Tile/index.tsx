@@ -1,11 +1,12 @@
 import { ComponentProps } from '@flux/shared/models/ComponentProps';
+import Article from '@flux/shared/models/Article';
 import connectAllProps from '~/utils/connect';
 import React from 'react';
 
 type Props = ComponentProps & {
     title: string;
     subtitle: string;
-    data?: string;
+    data?: Article[] | string;
 };
 type State = {};
 

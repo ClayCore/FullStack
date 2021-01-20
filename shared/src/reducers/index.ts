@@ -1,14 +1,18 @@
 import { combineReducers } from 'redux';
-import userState from './user';
 import articleState from './article';
-import translations from './translations';
-import userDictionary from './userDictionary';
 import error from './error';
 import fabActions from './fabActions';
+import redirectTask from './redirectTask';
+import threadState from './thread';
+import translations from './translations';
+import userDictionary from './userDictionary';
+import userState from './user';
 
 const reducer = combineReducers({
     userState,
     articleState,
+    threadState,
+    redirectTask,
     error,
     translations,
     userDictionary,
