@@ -21,19 +21,19 @@
     },
     "scripts": {
         "install": "yarn install:server && yarn install:client && yarn install:shared",
-        "install:server": "cd server && yarn install",
+        "install:server": "cd server && cargo fetch",
         "install:client": "cd client && yarn install",
         "install:shared": "cd shared && yarn install",
         "build": "yarn build:server && yarn build:client",
-        "build:server": "cd server && yarn build",
+        "build:server": "cd server && cargo build",
         "build:client": "cd client && yarn build",
         "start": "concurrently \"yarn start:server\" \"yarn start:client\"",
-        "start:server": "cd server && yarn start",
+        "start:server": "cd server && cargo run",
         "start:client": "cd client && yarn start",
         "lint": "yarn lint:server && yarn lint:client",
-        "lint:server": "cd server && yarn lint",
+        "lint:server": "cd server && cargo clippy",
         "lint:client": "cd client && yarn lint",
-        "serve": "cd server && yarn serve",
+        "serve": "cd server && cargo run",
         "heroku-postbuild": "yarn build:client"
     }
 }
