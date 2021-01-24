@@ -40,7 +40,7 @@ if (prod) {
     server_port = SERVERPORT_PROD;
     origin = HOSTNAME_PROD;
 } else {
-    url = HOSTURL_DEV;
+    url = HOSTNAME_DEV;
     server_port = SERVERPORT_DEV;
     origin = HOSTNAME_DEV;
 }

@@ -1,4 +1,3 @@
-import { API_VERSION } from '@flux/shared/routes';
 import { ComponentProps as Props } from '@flux/shared/models/ComponentProps';
 import connectAllProps from '~/utils/connect';
 import fetch from '@flux/shared/fetch';
@@ -20,7 +19,7 @@ class Banner extends React.Component<Props, State> {
     }
 
     getVersion = () => {
-        fetch(API_VERSION, undefined, 'GET').then((json: any) => {
+        fetch('/api/version', undefined, 'GET').then((json: any) => {
             if (json && json.version) {
                 this.setState({ version: json.version });
             } else {

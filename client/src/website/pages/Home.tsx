@@ -4,7 +4,12 @@ import Footer from '../components/layout/Footer';
 import Tile from '../components/layout/Tile';
 import React from 'react';
 
-type State = {};
+type State = {
+    projectsState: {
+        valid: boolean;
+        data: any[];
+    };
+};
 
 class Home extends React.Component<Props, State> {
     componentDidMount() {

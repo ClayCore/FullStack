@@ -6,7 +6,7 @@ import React from 'react';
 type Props = ComponentProps & {
     title: string;
     subtitle: string;
-    data?: Article[] | string;
+    data?: Article[];
 };
 type State = {};
 
@@ -24,7 +24,11 @@ class Tile extends React.Component<Props, State> {
                     <fieldset>
                         <header>{t(title)}</header>
                         <div className="subtitle">{t(subtitle)}:</div>
-                        <div className="dataList">{data}</div>
+                        <div className="dataList">
+                            {data.map((value: Article) => {
+                                value;
+                            })}
+                        </div>
                     </fieldset>
                 </section>
             );

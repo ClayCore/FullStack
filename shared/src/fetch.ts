@@ -35,15 +35,17 @@ const _fetch = async (
 
     // Concatenate the URI subdirectory with the hostname
     // if it wasn't provided
+
     let completeUrl: string = '';
-    if (url) {
-        completeUrl = url;
-        // console.log(`FetchURL: [${url}]`);
+    if (process.env.NODE_ENV === 'development') {
+        if (url && !url.startsWith(getHostUrl())) {
+            completeUrl = `${getHostUrl()}${url}`;
+        }
+    } else {
+        if (url) {
+            completeUrl = url;
+        }
     }
-    // if (url && !url.startsWith(getHostUrl())) {
-    //     console.log(`Fetch HostURL: [${getHostUrl()}] / [${url}]`);
-    //     completeUrl = `${getHostUrl()}${url}`;
-    // }
 
     const headers: any = {
         Accept: '*/*',

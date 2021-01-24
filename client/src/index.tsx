@@ -1,6 +1,10 @@
 import { $ } from '@flux/shared/utils';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { HOSTURL_DEV, HOSTURL_PROD } from '@flux/shared/hostUrls';
+import {
+    HOSTURL_DEV,
+    HOSTURL_PROD,
+    HOSTURL_DEV_SERVER,
+} from '@flux/shared/hostUrls';
 import { initReactI18next } from 'react-i18next';
 import { initFontLibrary } from './utils';
 import { initStorage } from '@flux/shared/storage';
@@ -29,7 +33,7 @@ if (typeof document === 'undefined') {
 const ENV = process.env.NODE_ENV;
 if (ENV === 'development') {
     serviceWorker.register();
-    setHostUrl(HOSTURL_DEV);
+    setHostUrl(HOSTURL_DEV_SERVER);
 } else {
     serviceWorker.unregister();
     setHostUrl(HOSTURL_PROD);

@@ -15,6 +15,7 @@ import session from 'express-session';
 
 import './config/passport-consumer';
 import version from './routes/version';
+import article from './routes/article';
 
 const MongoStore = mongo(session);
 const mongoUrl: string = MONGODB_URI as string;
@@ -128,5 +129,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/api/version', version);
+app.use('/api/article', article);
 
 export default app;

@@ -13,6 +13,7 @@ export const HOSTPORT_DEV: number = 1234;
 export const SERVERPORT_DEV: number = 3001;
 
 export const HOSTURL_DEV: string = `${HOSTNAME_DEV}:${HOSTPORT_DEV}`;
+export const HOSTURL_DEV_SERVER: string = `${HOSTNAME_DEV}:${SERVERPORT_DEV}`;
 
 export const HOSTNAME_PROD: string = 'https://claymore-blog.herokuapp.com';
 export const HOSTPORT_PROD: number = normalizePort(80);
