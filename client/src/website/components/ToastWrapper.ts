@@ -1,5 +1,6 @@
-import { toast, ToastContainerProps } from 'react-toastify';
 import { Store, AnyAction } from 'redux';
+import { toast, ToastContainerProps } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import AppState from '@flux/shared/models/Client/AppState';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,9 +21,9 @@ export default class ToastWrapper {
     }
 
     success(message: string): void {
-        let displayText: string = this.store.getState().translations.messages[
-            message
-        ];
+        const { t } = useTranslation();
+
+        let displayText = t(message);
         if (!displayText) {
             displayText = message;
         }
@@ -31,9 +32,9 @@ export default class ToastWrapper {
     }
 
     error(message: string): void {
-        let displayText: string = this.store.getState().translations.messages[
-            message
-        ];
+        const { t } = useTranslation();
+
+        let displayText = t(message);
         if (!displayText) {
             displayText = message;
         }
