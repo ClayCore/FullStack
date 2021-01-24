@@ -17,10 +17,14 @@
         ]
     },
     "dependencies": {
-        "concurrently": "5.3.0"
+        "concurrently": "~5.3.0"
     },
     "scripts": {
-        "install": "yarn install:server && yarn install:client && yarn install:shared",
+        "upgrade": "yarn upgrade:server && yarn upgrade:client && yarn upgrade:shared",
+        "upgrade:server": "cd server && yarn upgrade",
+        "upgrade:client": "cd client && yarn upgrade",
+        "upgrade:shared": "cd shared && yarn upgrade",
+        "install": "yarn upgrade && yarn install:server && yarn install:client && yarn install:shared",
         "install:server": "cd server && yarn install",
         "install:client": "cd client && yarn install",
         "install:shared": "cd shared && yarn install",
