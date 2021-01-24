@@ -3,12 +3,12 @@
 
 .cache/
 .DS_Store
-.env
-.env.development.local
-.env.development
-.env.local
-.env.production.local
-.env.test.local
+*.env
+*.env.development.local
+*.env.development
+*.env.local
+*.env.production.local
+*.env.test.local
 .eslintcache
 .grunt
 .lock-wscript

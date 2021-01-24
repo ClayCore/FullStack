@@ -32,8 +32,59 @@ const TRANSLATION: Translation = {
                 title: 'About me',
                 introduction:
                     "Hi, I'm Marek. I'm a self-taught web developer and music producer.",
-                learn_more:
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in lorem scelerisque, finibus diam ac, laoreet nunc. Vivamus at lorem dui. Suspendisse tempor varius mauris nec dictum. Praesent efficitur nunc eu turpis blandit posuere. Nulla erat augue, finibus a ornare vel, dictum nec orci. Nulla non nisi convallis, euismod ipsum sit amet, aliquam ligula. Morbi vehicula nec metus vitae porttitor. Morbi vulputate, sapien nec blandit bibendum, leo ex dictum eros, ac egestas leo metus non nisl. Praesent accumsan nec velit a tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris sollicitudin mi vitae accumsan hendrerit. Vestibulum ultricies euismod libero, eget accumsan nunc elementum eu. Praesent commodo ex risus, et fringilla leo volutpat lacinia. Sed maximus, ex in accumsan consequat, tellus arcu posuere mi, id dignissim mauris purus quis nisi. Ut in pellentesque dui, quis varius ante',
+                bio: {
+                    header: 'Bio',
+                    body:
+                        "I'm an IT graduate coming from a vocation school in Poland. I've been dabbling in music production for around 7 years and you can hear my work by clicking the projects tab. What you can also see on that tab are some programming projects that may or may not be still in development. I did low-level OSDev for a while and then started work on game engines and other applications. I mostly write in Rust although I am quite comfortable with web development and Typescript too. This entire web app you're on right now is actually also what I wrote from scratch",
+                },
+                personal: {
+                    header: 'Personal information',
+                    body: [
+                        'Name',
+                        'Marek Małecki',
+                        'Birthdate',
+                        '19-03-2000',
+                        'Email',
+                        'marekczjk@gmail.com',
+                    ],
+                },
+                communication: {
+                    header: 'Communication skills',
+                    body: [
+                        'Polish',
+                        'Native',
+                        'English',
+                        'Very fluent (written and spoken)',
+                    ],
+                },
+                technology: {
+                    header: 'Technology summary',
+                    body: {
+                        programming: {
+                            header: 'Programming languages',
+                            body:
+                                'Rust, Typescript, Python, C, C#, C++, Javascript, JSX/TSX',
+                        },
+                        operating_systems: {
+                            header: 'Operating systems',
+                            body:
+                                'Microsoft Windows 7 and 10, anything *nix, BSD, HaikuOS, RedoxOS',
+                        },
+                        web_frameworks: {
+                            header: 'Web frameworks',
+                            body: 'React, Node, Express, Mongoose, SASS/SCSS',
+                        },
+                        versioning: {
+                            header: 'Source code control and tools',
+                            body: "Git, SSH, Oracle's VirtualBox",
+                        },
+                        editors: {
+                            header: 'IDEs and editors',
+                            body:
+                                "Visual Studio Code, Visual Studio, Vim, Joe's Own Editor, IntelliJ Idea, PyCharm",
+                        },
+                    },
+                },
             },
             me: {
                 title: 'Me',
